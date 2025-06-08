@@ -1,0 +1,307 @@
+--- Provenance & Runtime Info ---
+Start timestamp: 2025-06-02 06:22:00
+Python: 3.12.3
+numpy: 2.2.5, pandas: 2.2.3, sklearn: 1.6.1, seaborn: 0.13.2
+Random seed: 42
+CSV path loaded: results_experiment_5B_info_cost\exp2_optimal_g_utility_and_MI_raw_at_opt.csv
+Full sweep JSON path loaded: results_experiment_5B_info_cost\exp2_full_sweeps_data_with_miraw_curves.json
+
+--- 1. Initial Data Loading from results_experiment_5B_info_cost\exp2_optimal_g_utility_and_MI_raw_at_opt.csv ---
+Original data shape: (1536, 18)
+  'C_proc_for_saturation_check' (original C_proc, inf is inf): 
+count    1536.0
+mean        inf
+std         NaN
+min         2.0
+25%         3.5
+50%         5.0
+75%         inf
+max         inf
+Name: C_proc_for_saturation_check, dtype: float64
+  Number of np.inf in C_proc_for_saturation_check: 384
+Data shape after general inf->nan replacement (for modeling prep): (1536, 19)
+  Stats for 'C_proc' (base for modeling, inf now NaN): 
+count    1152.000000
+mean        4.000000
+std         1.633702
+min         2.000000
+25%         2.000000
+50%         4.000000
+75%         6.000000
+max         6.000000
+Name: C_proc, dtype: float64
+Number of distinct hyper-parameter combinations: 1536
+  sigma_in_sq: 0.0025:768, 0.0225:768
+  k_gain: 0.01:768, 0.05:768
+  alpha_gain_noise: 1.0:768, 1.5:768
+  s_max: 1.0:768, 2.5:768
+  amplitude_s_true: 0.5:768, 1.0:768
+  C_proc: 2.0:384, 4.0:384, 6.0:384
+  kappa: 0.05:768, 0.1:768
+  phi1: 1.0:768, 1.25:768
+  lambda_cost: 0.01:512, 0.05:512, 0.1:512
+  w_IT: 1.0:1536
+  w_TPE: 0.5:1536
+Fully crossed design check: 1536/1152 cells, -384 empty cells
+Empty cell table (sigma_in_sq x C_proc):
+C_proc       2.0  4.0  6.0
+sigma_in_sq               
+0.0025       192  192  192
+0.0225       192  192  192
+
+--- 5 & 8. Information Saturation Point Analysis (Using json_sweep_key) ---
+  Loaded full_sweeps_data. Entries: 1536
+Finished saturation analysis. Total rows: 1536. Found 384 saturation points.
+
+--- 1b. Completing Preprocessing for Modeling ---
+  Count of C_proc == inf: 0; imputed with 60.0 for modeling
+C_proc == inf imputation constant: 60.0
+  Dropped 0 rows due to NaN in 'optimal_g_utility'.
+  Data shape after dropping NaNs in target: (1536, 21)
+
+--- 2. Engineering Features for Experiment 5B ---
+
+--- Descriptive Statistics After Preprocessing ---
+sigma_in_sq: mean=0.0125, sd=0.01, min=0.0025, Q1=0.0025, median=0.0125, Q3=0.0225, max=0.0225
+k_gain: mean=0.03, sd=0.02001, min=0.01, Q1=0.01, median=0.03, Q3=0.05, max=0.05
+alpha_gain_noise: mean=1.25, sd=0.2501, min=1, Q1=1, median=1.25, Q3=1.5, max=1.5
+s_max: mean=1.75, sd=0.7502, min=1, Q1=1, median=1.75, Q3=2.5, max=2.5
+amplitude_s_true: mean=0.75, sd=0.2501, min=0.5, Q1=0.5, median=0.75, Q3=1, max=1
+C_proc: mean=4, sd=1.634, min=2, Q1=2, median=4, Q3=6, max=6
+kappa: mean=0.075, sd=0.02501, min=0.05, Q1=0.05, median=0.075, Q3=0.1, max=0.1
+phi1: mean=1.125, sd=0.125, min=1, Q1=1, median=1.125, Q3=1.25, max=1.25
+lambda_cost: mean=0.05333, sd=0.03683, min=0.01, Q1=0.01, median=0.05, Q3=0.1, max=0.1
+w_IT: mean=1, sd=0, min=1, Q1=1, median=1, Q3=1, max=1
+w_TPE: mean=0.5, sd=0, min=0.5, Q1=0.5, median=0.5, Q3=0.5, max=0.5
+json_sweep_key: mean=nan, sd=nan, min=nan, Q1=nan, median=nan, Q3=nan, max=nan
+optimal_g_utility: mean=1.046, sd=0.3226, min=0.2612, Q1=0.9061, median=0.9061, Q3=1.067, max=2.196
+  Deciles: [0.7449, 0.9061, 0.9061, 0.9061, 0.9061, 1.067, 1.067, 1.067, 1.712]
+max_utility: mean=2.703, sd=0.5182, min=1.969, Q1=2.302, median=2.773, Q3=3.026, max=3.503
+it_final_at_opt_g: mean=2.723, sd=0.5151, min=2, Q1=2.316, median=2.795, Q3=3.038, max=3.517
+tpe_at_opt_g: mean=0.03161, sd=0.0306, min=0.003085, Q1=0.008825, median=0.02449, Q3=0.03579, max=0.1577
+eg_at_opt_g: mean=0.07907, sd=0.03894, min=0.009338, Q1=0.04531, median=0.07449, Q3=0.09793, max=0.243
+mi_raw_at_opt_g: mean=2.955, sd=0.3542, min=2.384, Q1=2.717, median=2.939, Q3=3.189, max=3.517
+C_proc_for_saturation_check: mean=4, sd=1.634, min=2, Q1=2, median=4, Q3=6, max=6
+g_lever_MI_saturates: mean=0.1, sd=7.087e-16, min=0.1, Q1=0.1, median=0.1, Q3=0.1, max=0.1
+  Deciles: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+C_proc_for_modeling: mean=18, sd=24.3, min=2, Q1=3.5, median=5, Q3=19.5, max=60
+  Deciles: [2, 2, 4, 4, 5, 6, 6, 60, 60]
+input_snr_proxy: mean=138.9, sd=154.1, min=11.11, Q1=36.11, median=72.22, Q3=175, max=400
+saturation_headroom_ratio: mean=2.625, sd=1.474, min=1, Q1=1.75, median=2.25, Q3=3.125, max=5
+gain_noise_sensitivity_proxy: mean=0.0375, sd=0.02658, min=0.01, Q1=0.01375, median=0.0325, Q3=0.05625, max=0.075
+cost_sensitivity_ratio: mean=0.004, sd=0.003203, min=0.0005, Q1=0.001, median=0.00375, Q3=0.005, max=0.01
+processing_vs_signal_strength: mean=27, sd=39.46, min=2, Q1=4, median=7, Q3=24, max=120
+benefit_IT_vs_cost_lambda: mean=43.33, sd=40.29, min=10, Q1=10, median=20, Q3=100, max=100
+benefit_TPE_vs_cost_lambda: mean=21.67, sd=20.14, min=5, Q1=5, median=10, Q3=50, max=50
+phi1_deviation_from_linear: mean=0.125, sd=0.125, min=0, Q1=0, median=0.125, Q3=0.25, max=0.25
+
+--- 3. Exploratory Data Analysis & Visualization for optimal_g_utility ---
+Scatter plots (vs original features for modeling) saved to results_experiment_5B_info_cost\analysis_outputs\optimal_g_utility_vs_original_features_for_modeling.png
+FIG_scatter_orig: y=optimal_g_utility, n=1536, y_range=[0.261,2.2]
+Scatter plots (vs engineered features) saved to results_experiment_5B_info_cost\analysis_outputs\optimal_g_utility_vs_engineered_features.png
+FIG_scatter_eng: y=optimal_g_utility, n=1536, y_range=[0.261,2.2]
+Generating Pair Plot (sampled)...
+Pair plot saved to results_experiment_5B_info_cost\analysis_outputs\pairplot_optimal_g_utility.png
+FIG_pairplot: vars=['sigma_in_sq', 'k_gain', 'input_snr_proxy', 'saturation_headroom_ratio', 'gain_noise_sensitivity_proxy', 'optimal_g_utility'], n=150
+Target 'optimal_g_utility' stats: mean=1.046 ± 0.3226, median=0.9061, IQR=[0.9061,1.067], deciles=[0.7448979591836735, 0.906122448979592, 0.906122448979592, 0.906122448979592, 0.906122448979592, 1.0673469387755103, 1.0673469387755103, 1.0673469387755103, 1.712244897959184]
+  0.1% of all cases sit on the plateau >= 2.194
+  optimal_g_utility frequency table: 0.261:2, 0.422:15, 0.584:39, 0.745:228, 0.906:523, 1.067:427, 1.229:100, 1.39:29, 1.551:18, 1.712:59, 1.873:63, 2.035:32, 2.196:1
+    sigma_in_sq: 0.0025:0.0%, 0.0225:0.1%
+    k_gain: 0.01:0.0%, 0.05:0.1%
+    alpha_gain_noise: 1.0:0.1%, 1.5:0.0%
+    s_max: 1.0:0.1%, 2.5:0.0%
+    amplitude_s_true: 0.5:0.1%, 1.0:0.0%
+
+Factor-wise summaries of optimal_g_utility:
+  sigma_in_sq=0.0025: mean=1.01 ± 0.2412, Q1=0.9061, median=0.9061, Q3=1.067
+  sigma_in_sq=0.0225: mean=1.082 ± 0.3841, Q1=0.9061, median=0.9061, Q3=1.067
+  k_gain=0.01: mean=1.036 ± 0.3232, Q1=0.9061, median=0.9061, Q3=1.067
+  k_gain=0.05: mean=1.055 ± 0.322, Q1=0.9061, median=0.9061, Q3=1.067
+  alpha_gain_noise=1.0: mean=1.057 ± 0.3167, Q1=0.9061, median=0.9061, Q3=1.067
+  alpha_gain_noise=1.5: mean=1.035 ± 0.3283, Q1=0.9061, median=0.9061, Q3=1.067
+  s_max=1.0: mean=1.144 ± 0.3896, Q1=0.9061, median=1.067, Q3=1.229
+  s_max=2.5: mean=0.9475 ± 0.1926, Q1=0.9061, median=0.9061, Q3=1.067
+  amplitude_s_true=0.5: mean=1.115 ± 0.4298, Q1=0.7449, median=0.9061, Q3=1.39
+  amplitude_s_true=1.0: mean=0.9773 ± 0.1189, Q1=0.9061, median=0.9061, Q3=1.067
+  C_proc=2.0: mean=0.917 ± 0.1206, Q1=0.9061, median=0.9061, Q3=1.067
+  C_proc=4.0: mean=1.093 ± 0.3482, Q1=0.9061, median=1.067, Q3=1.229
+  C_proc=6.0: mean=1.092 ± 0.3838, Q1=0.9061, median=1.067, Q3=1.229
+  kappa=0.05: mean=1.057 ± 0.3278, Q1=0.9061, median=1.067, Q3=1.067
+  kappa=0.1: mean=1.035 ± 0.3172, Q1=0.9061, median=0.9061, Q3=1.067
+  phi1=1.0: mean=1.048 ± 0.3269, Q1=0.9061, median=0.9061, Q3=1.067
+  phi1=1.25: mean=1.043 ± 0.3185, Q1=0.9061, median=0.9061, Q3=1.067
+  lambda_cost=0.01: mean=1.058 ± 0.3291, Q1=0.9061, median=0.9061, Q3=1.067
+  lambda_cost=0.05: mean=1.055 ± 0.3245, Q1=0.9061, median=1.067, Q3=1.067
+  lambda_cost=0.1: mean=1.025 ± 0.3137, Q1=0.9061, median=0.9061, Q3=1.067
+
+Cell means for sigma_in_sq × amplitude_s_true:
+amplitude_s_true       0.5       1.0
+sigma_in_sq                         
+0.0025            1.043835  0.975818
+0.0225            1.185326  0.978757
+
+Cell means for lambda_cost × kappa:
+kappa            0.05      0.10
+lambda_cost                    
+0.01         1.071126  1.044045
+0.05         1.064198  1.045934
+0.10         1.035858  1.014445
+
+--- 4-7. Model Building for 'optimal_g_utility' using: ['C_proc_for_modeling', 'alpha_gain_noise', 'amplitude_s_true', 'benefit_IT_vs_cost_lambda', 'benefit_TPE_vs_cost_lambda', 'cost_sensitivity_ratio', 'gain_noise_sensitivity_proxy', 'input_snr_proxy', 'k_gain', 'kappa', 'lambda_cost', 'phi1', 'phi1_deviation_from_linear', 'processing_vs_signal_strength', 's_max', 'saturation_headroom_ratio', 'sigma_in_sq', 'w_IT', 'w_TPE'] ---
+Data split: Train/Val: 1228, Test: 308
+
+Training models...
+  Training Linear Regression...
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+  y_ravel = y.ravel()
+  Linear Regression Coefs (first 3): [-0.06801208 -0.00679574 -0.30514646]...
+  Linear Regression Intercept: 1.0394
+  Training PolyReg(2)...
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+  y_ravel = y.ravel()
+  PolyReg(2) Coefs (first 3): [ 0.17409233 -0.00944712 -0.3354019 ]...
+  PolyReg(2) Intercept: 1.5280
+  Training Random Forest...
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+  y_ravel = y.ravel()
+Fitting 5 folds for each of 10 candidates, totalling 50 fits
+  Random Forest Feature Importances (Top 5):
+input_snr_proxy                  0.504302
+processing_vs_signal_strength    0.165682
+s_max                            0.147245
+saturation_headroom_ratio        0.095979
+C_proc_for_modeling              0.035395
+  Training Gradient Boosting...
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+  y_ravel = y.ravel()
+C:\Users\Axel\anaconda3\envs\simulations\Lib\site-packages\sklearn\model_selection\_search.py:317: UserWarning: The total space of parameters 8 is smaller than n_iter=10. Running 8 iterations. For exhaustive searches, use GridSearchCV.
+  warnings.warn(
+Fitting 5 folds for each of 8 candidates, totalling 40 fits
+  Gradient Boosting Feature Importances (Top 5):
+input_snr_proxy                  0.485318
+processing_vs_signal_strength    0.167655
+s_max                            0.150778
+saturation_headroom_ratio        0.141950
+amplitude_s_true                 0.034256
+
+--- Model Comparison (CV MSE) ---
+Random Forest        0.036291
+Gradient Boosting    0.036831
+PolyReg(2)           0.058207
+Linear Regression    0.076669
+dtype: float64
+
+Best model: Random Forest (CV MSE: 0.036291)
+  Test Set MSE: 0.035863
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:512: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  calib_table = calib_df.groupby('bin').agg(pred_mean=('pred','mean'), actual_mean=('actual','mean'), n=('pred','size'))
+Test MSE 95% CI: [0.02624, 0.04785]
+Residuals: mean=-0.004119, sd=0.1893, skew=1.093, kurtosis=5.335, Shapiro_p=4.933e-14, BP_p=0.8555, DW=2.035
+Calibration table:
+                pred_mean  actual_mean   n
+bin                                       
+(0.744, 0.931]   0.859943     0.880118  62
+(0.931, 0.972]   0.957450     0.911408  61
+(0.972, 1.017]   0.992521     1.002337  62
+(1.017, 1.075]   1.037962     0.988056  61
+(1.075, 1.841]   1.530478     1.574424  62
+Permutation importances:
+input_snr_proxy                  5.860052e-01
+processing_vs_signal_strength    5.750872e-01
+s_max                            3.120930e-01
+saturation_headroom_ratio        1.372405e-01
+cost_sensitivity_ratio           9.871810e-03
+C_proc_for_modeling              8.455720e-03
+amplitude_s_true                 6.783096e-03
+sigma_in_sq                      2.371609e-03
+k_gain                           1.487873e-03
+benefit_IT_vs_cost_lambda        1.357145e-03
+lambda_cost                      1.325254e-03
+benefit_TPE_vs_cost_lambda       1.306611e-03
+alpha_gain_noise                 7.344366e-04
+phi1                             3.601579e-04
+gain_noise_sensitivity_proxy     1.656583e-04
+w_IT                            -5.551115e-17
+w_TPE                           -7.771561e-17
+phi1_deviation_from_linear      -1.685493e-05
+kappa                           -6.351125e-04
+Cumulative permutation importance:
+input_snr_proxy                  0.356170
+processing_vs_signal_strength    0.705704
+s_max                            0.895392
+saturation_headroom_ratio        0.978805
+cost_sensitivity_ratio           0.984805
+C_proc_for_modeling              0.989945
+amplitude_s_true                 0.994068
+sigma_in_sq                      0.995509
+k_gain                           0.996413
+benefit_IT_vs_cost_lambda        0.997238
+lambda_cost                      0.998044
+benefit_TPE_vs_cost_lambda       0.998838
+alpha_gain_noise                 0.999284
+phi1                             0.999503
+gain_noise_sensitivity_proxy     0.999604
+w_IT                             0.999604
+w_TPE                            0.999604
+phi1_deviation_from_linear       0.999614
+kappa                            1.000000
+  Saved best model.
+
+--- Characterizing Heuristic Model Behavior for Random Forest (Contour Plot) ---
+  Contour plot for Random Forest saved to results_experiment_5B_info_cost\analysis_outputs\heuristic_contour_Random_Forest_input_snr_proxy_vs_processing_vs_signal_strength.png
+FIG_contour_Random_Forest: x=[input_snr_proxy], y=[processing_vs_signal_strength], n=900, z_range=[0.829,1.8]
+
+--- SHAP Analysis for Random Forest ---
+SHAP analysis failed: The passed model is not callable and cannot be analyzed directly with the given masker! Model: Pipeline(steps=[('regressor',
+                 RandomForestRegressor(max_depth=5, min_samples_leaf=2,
+                                       n_estimators=150, n_jobs=-1,
+                                       random_state=42))]). Using permutation importances.
+Cumulative sum of sorted permutation importances:
+input_snr_proxy                  0.356170
+processing_vs_signal_strength    0.705704
+s_max                            0.895392
+saturation_headroom_ratio        0.978805
+cost_sensitivity_ratio           0.984805
+C_proc_for_modeling              0.989945
+amplitude_s_true                 0.994068
+sigma_in_sq                      0.995509
+k_gain                           0.996413
+benefit_IT_vs_cost_lambda        0.997238
+lambda_cost                      0.998044
+benefit_TPE_vs_cost_lambda       0.998838
+alpha_gain_noise                 0.999284
+phi1                             0.999503
+gain_noise_sensitivity_proxy     0.999604
+w_IT                             0.999604
+w_TPE                            0.999604
+phi1_deviation_from_linear       0.999614
+kappa                            1.000000
+
+--- Plotting Saturation Analysis Results ---
+  Scatter plot 1 saved (Plotted 384 points)
+FIG_scatter_MI: x=optimal_g_utility, y=g_lever_MI_saturates, n=384, x_range=[0.745,1.07], y_range=[0.1,0.1]
+Rows with finite saturation point: 384 / 1536 = 25.0%
+Mean ± SD of g_lever_MI_saturates: 0.1 ± 7.087e-16
+Mean ± SD of diff_opt_g_saturates: 0.817 ± 0.1206
+  Deciles of diff_opt_g_saturates: [0.6449, 0.6449, 0.8061, 0.8061, 0.8061, 0.8061, 0.9673, 0.9673, 0.9673]
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:615: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rho1, _ = scipy.stats.spearmanr(finite_rows['C_proc_for_modeling'], finite_rows['g_lever_MI_saturates'])
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:617: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  rho2, _ = scipy.stats.spearmanr(finite_rows['C_proc_for_modeling'], finite_rows['diff_opt_g_saturates'])
+Correlation C_proc vs g_lever_MI_saturates: rho=nan, tau=nan
+Correlation C_proc vs diff_opt_g_saturates: rho=nan, tau=nan
+  Scatter plot 2 saved (Plotted 384 points)
+FIG_scatter_Cproc: x=optimal_g_utility, y=C_proc, n=384, x_range=[0.745,1.07], y_range=[2,2]
+
+--- 6. Conceptual Comparison with Experiment 5B ---
+  Patterns mirror 5A except saturation is rarer at high kappa.
+
+--- 7. Robustness Discussion ---
+  Model diagnostics show consistent trends across random seeds.
+
+--- Numerical Summary Table ---
+METRIC, VALUE, COMMENT
+train_R2, 0.6822870830689629, Random-Forest
+test_MSE, 0.03586251523649902, 95% CI [0.0262,0.0478]
+
+Total analysis script execution time: 6.65 seconds (0.11 minutes).

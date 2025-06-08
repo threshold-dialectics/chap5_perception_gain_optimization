@@ -1,0 +1,17 @@
+,sum_sq,df,F,PR(>F)
+sigma_in_sq,0.4346,1.0,259.1949,0.0
+k_gain,0.0002,1.0,0.134,0.7144
+alpha_gain_noise,0.0,1.0,0.0,1.0
+s_max,0.0342,1.0,20.4062,0.0
+amplitude_s_true,0.8343,1.0,497.525,0.0
+sigma_in_sq:k_gain,0.0006,1.0,0.3809,0.5373
+sigma_in_sq:alpha_gain_noise,0.0,1.0,0.0,1.0
+sigma_in_sq:s_max,0.0973,1.0,58.0,0.0
+sigma_in_sq:amplitude_s_true,1.2147,1.0,724.413,0.0
+k_gain:alpha_gain_noise,0.0003,1.0,0.2022,0.653
+k_gain:s_max,0.0,1.0,0.007,0.9335
+k_gain:amplitude_s_true,0.0009,1.0,0.558,0.4553
+alpha_gain_noise:s_max,0.0,1.0,0.0125,0.911
+alpha_gain_noise:amplitude_s_true,0.0001,1.0,0.0373,0.847
+s_max:amplitude_s_true,0.0,1.0,0.0062,0.9373
+Residual,1.261,752.0,,

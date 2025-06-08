@@ -1,0 +1,1008 @@
+--- Experiment Run Start ---
+Timestamp: 2025-06-02 05:05:04
+
+--- SHAP Library Status ---
+SHAP library found and available for analysis.
+
+--- Experiment Configuration ---
+Results Folder: results_experiment_5A_adaptive_heuristic
+Default True Signal Frequency: 1.0 Hz
+Duration: 2.0 s, Sampling Rate: 100 Hz, Num Points: 200
+gLever Sweep: 30 points from 0.10 to 3.00
+Trials per gLever value: 20
+Random seed: 42
+Python and library versions:
+  Python: 3.12.3
+  numpy: 2.2.5
+  pandas: 2.2.3
+  scikit-learn: 1.6.1
+  shap: 0.47.2
+CPU: Intel64 Family 6 Model 183 Stepping 1, GenuineIntel
+
+Parameter Grid for System Sweep:
+  sigma_in_sq: [0.0001, 0.0025000000000000005, 0.010000000000000002, 0.04000000000000001]
+  k_gain: [0.001, 0.01, 0.05, 0.1]
+  alpha_gain_noise: [1.0, 1.5, 2.0]
+  s_max: [0.75, 1.0, 2.5, 5.0]
+  amplitude_s_true: [0.5, 1.0, 1.5, 2.0]
+------------------------------
+
+--- 1. Data Generation (Systematic Parameter Sweep) ---
+Starting sweep with NUM_TRIALS_PER_G_VALUE = 20.
+Total parameter combinations to test: 768
+Estimated total core simulations: 460,800
+
+Finished all 768 combinations.
+
+Full results of parameter sweep saved to results_experiment_5A_adaptive_heuristic\optimal_gLever_sweep_results.csv
+Shape of full results DataFrame: (768, 7)
+Number of NaNs in 'optimal_g_mse': 0
+Shape of DataFrame after dropping NaNs in 'optimal_g_mse': (768, 7)
+Engineered features added: 'input_snr_proxy', 'saturation_headroom_ratio', 'gain_noise_sensitivity_proxy'
+
+Descriptive statistics for all variables:
+  sigma_in_sq: mean=0.01315, sd=0.01594, median=0.00625, Q1=0.0019, Q3=0.0175
+  k_gain: mean=0.04025, sd=0.03914, median=0.03, Q1=0.00775, Q3=0.0625
+  alpha_gain_noise: mean=1.5, sd=0.4085, median=1.5, Q1=1, Q3=2
+  s_max: mean=2.312, sd=1.691, median=1.75, Q1=0.9375, Q3=3.125
+  amplitude_s_true: mean=1.25, sd=0.5594, median=1.25, Q1=0.875, Q3=1.625
+  optimal_g_mse: mean=0.9789, sd=0.07111, median=1, Q1=1, Q3=1
+  min_mse_at_opt_g: mean=0.08725, sd=0.163, median=0.01103, Q1=0.002541, Q3=0.05123
+  input_snr_proxy: mean=4934, sd=1.069e+04, median=312.5, Q1=89.06, Q3=1825
+  saturation_headroom_ratio: mean=2.409, sd=2.426, median=1.583, Q1=0.7292, Q3=2.708
+  gain_noise_sensitivity_proxy: mean=0.06037, sd=0.06303, median=0.035, Q1=0.008, Q3=0.1
+Counts per level for grid factors:
+  sigma_in_sq: 0.0001 -> 192, 0.0025000000000000005 -> 192, 0.010000000000000002 -> 192, 0.04000000000000001 -> 192
+  k_gain: 0.001 -> 192, 0.01 -> 192, 0.05 -> 192, 0.1 -> 192
+  alpha_gain_noise: 1.0 -> 256, 1.5 -> 256, 2.0 -> 256
+  s_max: 0.75 -> 192, 1.0 -> 192, 2.5 -> 192, 5.0 -> 192
+  amplitude_s_true: 0.5 -> 192, 1.0 -> 192, 1.5 -> 192, 2.0 -> 192
+  Fully crossed design check: 768/768 cells, 0 empty cells
+
+Mean ± SD of optimal_g_mse grouped by single factors:
+  sigma_in_sq=0.0001: 1.0000 ± 0.0000
+  sigma_in_sq=0.0025000000000000005: 1.0000 ± 0.0000
+  sigma_in_sq=0.010000000000000002: 0.9750 ± 0.0434
+  sigma_in_sq=0.04000000000000001: 0.9406 ± 0.1266
+  k_gain=0.001: 0.9776 ± 0.0729
+  k_gain=0.01: 0.9797 ± 0.0675
+  k_gain=0.05: 0.9818 ± 0.0689
+  k_gain=0.1: 0.9766 ± 0.0754
+  alpha_gain_noise=1.0: 0.9785 ± 0.0712
+  alpha_gain_noise=1.5: 0.9797 ± 0.0701
+  alpha_gain_noise=2.0: 0.9785 ± 0.0723
+  s_max=0.75: 0.9901 ± 0.0749
+  s_max=1.0: 0.9833 ± 0.0681
+  s_max=2.5: 0.9708 ± 0.0693
+  s_max=5.0: 0.9714 ± 0.0706
+  amplitude_s_true=0.5: 0.9120 ± 0.1064
+  amplitude_s_true=1.0: 0.9927 ± 0.0403
+  amplitude_s_true=1.5: 1.0047 ± 0.0257
+  amplitude_s_true=2.0: 1.0062 ± 0.0243
+
+Within-level dispersion and Tukey outliers:
+  sigma_in_sq=0.0001: SD_within=0.0000, IQR=0.0000, n_outliers_Tukey=0
+  sigma_in_sq=0.0025000000000000005: SD_within=0.0000, IQR=0.0000, n_outliers_Tukey=0
+  sigma_in_sq=0.010000000000000002: SD_within=0.0434, IQR=0.0250, n_outliers_Tukey=48
+  sigma_in_sq=0.04000000000000001: SD_within=0.1266, IQR=0.1250, n_outliers_Tukey=1
+  k_gain=0.001: SD_within=0.0729, IQR=0.0000, n_outliers_Tukey=35
+  k_gain=0.01: SD_within=0.0675, IQR=0.0000, n_outliers_Tukey=36
+  k_gain=0.05: SD_within=0.0689, IQR=0.0000, n_outliers_Tukey=41
+  k_gain=0.1: SD_within=0.0754, IQR=0.0000, n_outliers_Tukey=38
+  alpha_gain_noise=1.0: SD_within=0.0712, IQR=0.0000, n_outliers_Tukey=48
+  alpha_gain_noise=1.5: SD_within=0.0701, IQR=0.0000, n_outliers_Tukey=53
+  alpha_gain_noise=2.0: SD_within=0.0723, IQR=0.0000, n_outliers_Tukey=49
+  s_max=0.75: SD_within=0.0749, IQR=0.0000, n_outliers_Tukey=45
+  s_max=1.0: SD_within=0.0681, IQR=0.0000, n_outliers_Tukey=33
+  s_max=2.5: SD_within=0.0693, IQR=0.0000, n_outliers_Tukey=37
+  s_max=5.0: SD_within=0.0706, IQR=0.0000, n_outliers_Tukey=35
+  amplitude_s_true=0.5: SD_within=0.1064, IQR=0.1250, n_outliers_Tukey=0
+  amplitude_s_true=1.0: SD_within=0.0403, IQR=0.0000, n_outliers_Tukey=32
+  amplitude_s_true=1.5: SD_within=0.0257, IQR=0.0000, n_outliers_Tukey=10
+  amplitude_s_true=2.0: SD_within=0.0243, IQR=0.0000, n_outliers_Tukey=12
+
+Quantiles of optimal_g_mse by factor:
+  sigma_in_sq=0.0001: q10=1.000, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  sigma_in_sq=0.0025000000000000005: q10=1.000, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  sigma_in_sq=0.010000000000000002: q10=0.900, q25=0.975, median=1.000, q75=1.000, q90=1.000
+  sigma_in_sq=0.04000000000000001: q10=0.700, q25=0.875, median=1.000, q75=1.000, q90=1.100
+  k_gain=0.001: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  k_gain=0.01: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  k_gain=0.05: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  k_gain=0.1: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  alpha_gain_noise=1.0: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  alpha_gain_noise=1.5: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  alpha_gain_noise=2.0: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  s_max=0.75: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.100
+  s_max=1.0: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  s_max=2.5: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  s_max=5.0: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  amplitude_s_true=0.5: q10=0.700, q25=0.875, median=0.950, q75=1.000, q90=1.000
+  amplitude_s_true=1.0: q10=0.900, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  amplitude_s_true=1.5: q10=1.000, q25=1.000, median=1.000, q75=1.000, q90=1.000
+  amplitude_s_true=2.0: q10=1.000, q25=1.000, median=1.000, q75=1.000, q90=1.000
+
+Interaction of factors with amplitude_s_true:
+  sigma_in_sq=0.0001, amp=0.5: 1.0000 ± 0.0000
+  sigma_in_sq=0.0001, amp=1.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.0001, amp=1.5: 1.0000 ± 0.0000
+  sigma_in_sq=0.0001, amp=2.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.0025000000000000005, amp=0.5: 1.0000 ± 0.0000
+  sigma_in_sq=0.0025000000000000005, amp=1.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.0025000000000000005, amp=1.5: 1.0000 ± 0.0000
+  sigma_in_sq=0.0025000000000000005, amp=2.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.010000000000000002, amp=0.5: 0.9000 ± 0.0000
+  sigma_in_sq=0.010000000000000002, amp=1.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.010000000000000002, amp=1.5: 1.0000 ± 0.0000
+  sigma_in_sq=0.010000000000000002, amp=2.0: 1.0000 ± 0.0000
+  sigma_in_sq=0.04000000000000001, amp=0.5: 0.7479 ± 0.0505
+  sigma_in_sq=0.04000000000000001, amp=1.0: 0.9708 ± 0.0771
+  sigma_in_sq=0.04000000000000001, amp=1.5: 1.0188 ± 0.0491
+  sigma_in_sq=0.04000000000000001, amp=2.0: 1.0250 ± 0.0438
+  k_gain=0.001, amp=0.5: 0.9083 ± 0.1127
+  k_gain=0.001, amp=1.0: 0.9958 ± 0.0410
+  k_gain=0.001, amp=1.5: 1.0000 ± 0.0000
+  k_gain=0.001, amp=2.0: 1.0062 ± 0.0245
+  k_gain=0.01, amp=0.5: 0.9167 ± 0.0996
+  k_gain=0.01, amp=1.0: 0.9896 ± 0.0371
+  k_gain=0.01, amp=1.5: 1.0104 ± 0.0371
+  k_gain=0.01, amp=2.0: 1.0021 ± 0.0144
+  k_gain=0.05, amp=0.5: 0.9167 ± 0.0996
+  k_gain=0.05, amp=1.0: 0.9958 ± 0.0459
+  k_gain=0.05, amp=1.5: 1.0042 ± 0.0202
+  k_gain=0.05, amp=2.0: 1.0104 ± 0.0309
+  k_gain=0.1, amp=0.5: 0.9062 ± 0.1156
+  k_gain=0.1, amp=1.0: 0.9896 ± 0.0371
+  k_gain=0.1, amp=1.5: 1.0042 ± 0.0289
+  k_gain=0.1, amp=2.0: 1.0062 ± 0.0245
+  alpha_gain_noise=1.0, amp=0.5: 0.9109 ± 0.1086
+  alpha_gain_noise=1.0, amp=1.0: 0.9953 ± 0.0415
+  alpha_gain_noise=1.0, amp=1.5: 1.0031 ± 0.0175
+  alpha_gain_noise=1.0, amp=2.0: 1.0047 ± 0.0213
+  alpha_gain_noise=1.5, amp=0.5: 0.9141 ± 0.1037
+  alpha_gain_noise=1.5, amp=1.0: 0.9906 ± 0.0387
+  alpha_gain_noise=1.5, amp=1.5: 1.0047 ± 0.0278
+  alpha_gain_noise=1.5, amp=2.0: 1.0094 ± 0.0294
+  alpha_gain_noise=2.0, amp=0.5: 0.9109 ± 0.1086
+  alpha_gain_noise=2.0, amp=1.0: 0.9922 ± 0.0410
+  alpha_gain_noise=2.0, amp=1.5: 1.0062 ± 0.0302
+  alpha_gain_noise=2.0, amp=2.0: 1.0047 ± 0.0213
+  s_max=0.75, amp=0.5: 0.9146 ± 0.1031
+  s_max=0.75, amp=1.0: 1.0167 ± 0.0377
+  s_max=0.75, amp=1.5: 1.0146 ± 0.0412
+  s_max=0.75, amp=2.0: 1.0146 ± 0.0357
+  s_max=1.0, amp=0.5: 0.9146 ± 0.1031
+  s_max=1.0, amp=1.0: 1.0021 ± 0.0144
+  s_max=1.0, amp=1.5: 1.0062 ± 0.0245
+  s_max=1.0, amp=2.0: 1.0104 ± 0.0309
+  s_max=2.5, amp=0.5: 0.9104 ± 0.1096
+  s_max=2.5, amp=1.0: 0.9750 ± 0.0438
+  s_max=2.5, amp=1.5: 0.9979 ± 0.0144
+  s_max=2.5, amp=2.0: 1.0000 ± 0.0000
+  s_max=5.0, amp=0.5: 0.9083 ± 0.1127
+  s_max=5.0, amp=1.0: 0.9771 ± 0.0425
+  s_max=5.0, amp=1.5: 1.0000 ± 0.0000
+  s_max=5.0, amp=2.0: 1.0000 ± 0.0000
+
+  Cell means table for sigma_in_sq × amplitude_s_true:
+  amplitude_s_true       0.5       1.0      1.5    2.0
+  sigma_in_sq                                         
+  0.0001            1.000000  1.000000  1.00000  1.000
+  0.0025            1.000000  1.000000  1.00000  1.000
+  0.0100            0.900000  1.000000  1.00000  1.000
+  0.0400            0.747917  0.970833  1.01875  1.025
+
+--- Factorial ANOVA (main effects and first-order interactions) ---
+                                     sum_sq     df         F  PR(>F)
+  sigma_in_sq                        0.4346    1.0  259.1949  0.0000
+  k_gain                             0.0002    1.0    0.1340  0.7144
+  alpha_gain_noise                   0.0000    1.0    0.0000  1.0000
+  s_max                              0.0342    1.0   20.4062  0.0000
+  amplitude_s_true                   0.8343    1.0  497.5250  0.0000
+  sigma_in_sq:k_gain                 0.0006    1.0    0.3809  0.5373
+  sigma_in_sq:alpha_gain_noise       0.0000    1.0    0.0000  1.0000
+  sigma_in_sq:s_max                  0.0973    1.0   58.0000  0.0000
+  sigma_in_sq:amplitude_s_true       1.2147    1.0  724.4130  0.0000
+  k_gain:alpha_gain_noise            0.0003    1.0    0.2022  0.6530
+  k_gain:s_max                       0.0000    1.0    0.0070  0.9335
+  k_gain:amplitude_s_true            0.0009    1.0    0.5580  0.4553
+  alpha_gain_noise:s_max             0.0000    1.0    0.0125  0.9110
+  alpha_gain_noise:amplitude_s_true  0.0001    1.0    0.0373  0.8470
+  s_max:amplitude_s_true             0.0000    1.0    0.0062  0.9373
+  Residual                           1.2610  752.0       NaN     NaN
+  partial_eta2_sigma_in_sq = 0.2563 [95% CI 0.0000-0.0066]
+  partial_eta2_k_gain = 0.0002 [95% CI 0.0000-0.0066]
+  partial_eta2_alpha_gain_noise = 0.0000 [95% CI 0.0000-0.0066]
+  partial_eta2_s_max = 0.0264 [95% CI 0.0000-0.0066]
+  partial_eta2_amplitude_s_true = 0.3982 [95% CI 0.0000-0.0066]
+  partial_eta2_sigma_in_sq:k_gain = 0.0005 [95% CI 0.0000-0.0066]
+  partial_eta2_sigma_in_sq:alpha_gain_noise = 0.0000 [95% CI 0.0000-0.0066]
+  partial_eta2_sigma_in_sq:s_max = 0.0716 [95% CI 0.0000-0.0066]
+  partial_eta2_sigma_in_sq:amplitude_s_true = 0.4906 [95% CI 0.0000-0.0066]
+  partial_eta2_k_gain:alpha_gain_noise = 0.0002 [95% CI 0.0000-0.0066]
+  partial_eta2_k_gain:s_max = 0.0000 [95% CI 0.0000-0.0066]
+  partial_eta2_k_gain:amplitude_s_true = 0.0007 [95% CI 0.0000-0.0066]
+  partial_eta2_alpha_gain_noise:s_max = 0.0000 [95% CI 0.0000-0.0066]
+  partial_eta2_alpha_gain_noise:amplitude_s_true = 0.0001 [95% CI 0.0000-0.0066]
+  partial_eta2_s_max:amplitude_s_true = 0.0000 [95% CI 0.0000-0.0066]
+  Top 10 cells by absolute residual (observed - predicted):
+    sigma_in_sq=0.04000000000000001, k_gain=0.01, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.5: resid=0.1909 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.0, s_max=1.0, amplitude_s_true=1.0: resid=0.1861 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.1, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1847 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1834 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.5, s_max=0.75, amplitude_s_true=1.0: resid=0.1828 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1823 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1799 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.01, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1798 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=1.5, s_max=0.75, amplitude_s_true=1.0: resid=0.1795 (n=1.0)
+    sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0: resid=0.1790 (n=1.0)
+
+--- Visualizations of Input Data ---
+Scatter plots of optimal_g vs original features saved to results_experiment_5A_adaptive_heuristic\optimal_g_vs_original_features.png
+FIG_scatter_all: file=results_experiment_5A_adaptive_heuristic\optimal_g_vs_original_features.png, x=multiple_features, y=optimal_g_mse, n=768
+FIG_scatter_axes: x=[0.0001,5], y=[0.7,1.2]; n_points=768
+Target 'optimal_g_mse' stats: mean=0.9789 ± 0.0711, median=1.0000, IQR=[1.0000, 1.0000], deciles=[np.float64(0.8999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999), np.float64(0.9999999999999999)]
+  84.4% of all cases sit on the unit-MSE plateau.
+  optimal_g_mse frequency table: 0.7:25, 0.8:23, 0.9:72, 1:618, 1.1:29, 1.2:1
+  Plateau rate by factor:
+    sigma_in_sq: 0.0001:100.0%, 0.0025000000000000005:100.0%, 0.010000000000000002:75.0%, 0.04000000000000001:62.5%
+    k_gain: 0.001:84.9%, 0.01:84.4%, 0.05:84.4%, 0.1:83.9%
+    alpha_gain_noise: 1.0:84.8%, 1.5:84.0%, 2.0:84.4%
+    s_max: 0.75:87.5%, 1.0:87.5%, 2.5:80.7%, 5.0:81.8%
+    amplitude_s_true: 0.5:50.0%, 1.0:88.0%, 1.5:99.5%, 2.0:100.0%
+
+  Textual Summary of Scatter Plots (optimal_g_mse vs. Original Features):
+    Target variable: 'optimal_g_mse' (Overall range: 0.700 to 1.200, Mean: 0.979)
+    - vs. 'sigma_in_sq':
+        'sigma_in_sq' range: 0.0001 to 0.04 (Mean: 0.0132)
+        Pearson correlation with 'optimal_g_mse': -0.335
+        This suggests a weak negative relationship. Visual inspection is key for non-linearities.
+        Spearman ρ=-0.268 (p=4.18e-14); monotonic≈False; OLS slope=-1.494 ± 0.152 (p=1.45e-21); ΔAIC=-1.391, ΔBIC=3.253 for quadratic term
+        Quadratic term significant (β₂ = 37.7885 ± 20.5393, p=0.0662)
+        OLS slope 95% CI: [-1.791, -1.196], n=768
+        Kendall τ=-0.249 (p=5.39e-15)
+        LOWESS slope by decile: [-3.309490902456517e-13, nan, 50.00000000000005, 8.75000000000001, nan, nan, nan, nan, nan, nan]
+        Number of points outside ±3 SD ellipse: 26 / 768
+        Breusch-Pagan p (raw)=1.02e-17; variance scale max/min=inf
+        Quadratic fit R^2: 0.116; second-order coefficient: 37.7885
+        Could not compute extra scatter stats: operands could not be broadcast together with shapes (769,) (768,) 
+        dCor=0.470; hull area=0.0105; 95% ellipse widths≈(0.349,0.0733), θ≈94.5°
+    - vs. 'k_gain':
+        'k_gain' range: 0.001 to 0.1 (Mean: 0.0403)
+        Pearson correlation with 'optimal_g_mse': -0.008
+        This suggests a very weak or no clear linear negative relationship. Visual inspection is key for non-linearities.
+        Spearman ρ=0.002 (p=0.964); monotonic≈False; OLS slope=-0.014 ± 0.066 (p=0.833); ΔAIC=1.445, ΔBIC=6.089 for quadratic term
+        OLS slope 95% CI: [-0.142, 0.115], n=768
+        Kendall τ=0.001 (p=0.964)
+        LOWESS slope by decile: [-1.0935629975719881e-13, nan, 10.000000000000016, 4.999999999999976, nan, nan, nan, nan, nan, nan]
+        Number of points outside ±3 SD ellipse: 26 / 768
+        Quadratic fit R^2: 0.001; second-order coefficient: -1.9099
+        Could not compute extra scatter stats: operands could not be broadcast together with shapes (769,) (768,) 
+        dCor=0.023; hull area=0.0446; 95% ellipse widths≈(0.348,0.192), θ≈90.3°
+    - vs. 'alpha_gain_noise':
+        'alpha_gain_noise' range: 1 to 2 (Mean: 1.5)
+        Pearson correlation with 'optimal_g_mse': 0.000
+        This suggests a very weak or no clear linear positive relationship. Visual inspection is key for non-linearities.
+        Spearman ρ=-0.003 (p=0.924); monotonic≈False; OLS slope=0.000 ± 0.006 (p=1); ΔAIC=1.954, ΔBIC=6.597 for quadratic term
+        OLS slope 95% CI: [-0.012, 0.012], n=768
+        Kendall τ=-0.003 (p=0.925)
+        LOWESS slope by decile: [0.20000000000000054, 0.24999999999999994, nan, nan, nan, nan, nan, nan, nan, nan]
+        Number of points outside ±3 SD ellipse: 26 / 768
+        Quadratic fit R^2: 0.000; second-order coefficient: -0.0047
+        Could not compute extra scatter stats: operands could not be broadcast together with shapes (769,) (768,) 
+        dCor=0.011; hull area=0.4500; 95% ellipse widths≈(2,0.348), θ≈0.0°
+    - vs. 's_max':
+        's_max' range: 0.75 to 5 (Mean: 2.31)
+        Pearson correlation with 'optimal_g_mse': -0.094
+        This suggests a very weak or no clear linear negative relationship. Visual inspection is key for non-linearities.
+        Spearman ρ=-0.150 (p=3.01e-05); monotonic≈False; OLS slope=-0.004 ± 0.002 (p=0.0092); ΔAIC=-1.214, ΔBIC=3.430 for quadratic term
+        Quadratic term significant (β₂ = 0.0025 ± 0.0014, p=0.0737)
+        OLS slope 95% CI: [-0.007, -0.001], n=768
+        Kendall τ=-0.133 (p=3.1e-05)
+        LOWESS slope by decile: [-7.522482674208696e-15, nan, 0.20000000000000037, 0.10000000000000014, nan, nan, nan, nan, nan, nan]
+        Number of points outside ±3 SD ellipse: 26 / 768
+        Quadratic fit R^2: 0.013; second-order coefficient: 0.0025
+        Could not compute extra scatter stats: operands could not be broadcast together with shapes (769,) (768,) 
+        dCor=0.105; hull area=1.7000; 95% ellipse widths≈(8.28,0.347), θ≈179.8°
+    - vs. 'amplitude_s_true':
+        'amplitude_s_true' range: 0.5 to 2 (Mean: 1.25)
+        Pearson correlation with 'optimal_g_mse': 0.464
+        This suggests a moderate positive relationship. Visual inspection is key for non-linearities.
+        Spearman ρ=0.483 (p=3.15e-46); monotonic≈False; OLS slope=0.059 ± 0.004 (p=3.18e-42); ΔAIC=-77.917, ΔBIC=-73.273 for quadratic term
+        Quadratic term significant (β₂ = -0.0792 ± 0.0086, p=0)
+        OLS slope 95% CI: [0.051, 0.067], n=768
+        Kendall τ=0.431 (p=1.33e-41)
+        LOWESS slope by decile: [0.19999999999999518, nan, 0.3333333333333323, 0.24999999999999917, nan, nan, nan, nan, nan, nan]
+        Number of points outside ±3 SD ellipse: 26 / 768
+        Quadratic fit R^2: 0.293; second-order coefficient: -0.0792
+        Could not compute extra scatter stats: operands could not be broadcast together with shapes (769,) (768,) 
+        dCor=0.489; hull area=0.4000; 95% ellipse widths≈(2.74,0.308), θ≈-176.6°
+
+Pair plot saved to results_experiment_5A_adaptive_heuristic\pairplot_original_features.png
+FIG_pairplot_original: file=results_experiment_5A_adaptive_heuristic\pairplot_original_features.png, vars=sigma_in_sq,k_gain,alpha_gain_noise,s_max,amplitude_s_true,optimal_g_mse, n=200
+FIG_pairplot_axes: x=[0.0001,5], y=[0.0001,5]; n_points=200
+
+  Textual Summary of Pair Plot (Original Features and Optimal g_mse):
+    The pair plot visualizes pairwise relationships and distributions for: sigma_in_sq, k_gain, alpha_gain_noise, s_max, amplitude_s_true, optimal_g_mse.
+    (Based on a random sample of 200 data points)
+    Distribution Summary (from diagonal KDE plots):
+    - 'sigma_in_sq': Mean=0.0132, Std=0.0159, Min=0.0001, Q1=0.0019, Median=0.00625, Q3=0.0175, Max=0.04, Skewness=0.99, Kurtosis=-0.81.
+      The distribution of 'sigma_in_sq' appears positively skewed.
+      Silverman's bandwidth h≈0.004473
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+    - 'k_gain': Mean=0.0403, Std=0.0391, Min=0.001, Q1=0.00775, Median=0.03, Q3=0.0625, Max=0.1, Skewness=0.53, Kurtosis=-1.30.
+      The distribution of 'k_gain' appears positively skewed.
+      Silverman's bandwidth h≈0.01099
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+    - 'alpha_gain_noise': Mean=1.5, Std=0.409, Min=1, Q1=1, Median=1.5, Q3=2, Max=2, Skewness=0.00, Kurtosis=-1.50.
+      The distribution of 'alpha_gain_noise' appears approximately symmetric.
+      Silverman's bandwidth h≈0.1147
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+    - 's_max': Mean=2.31, Std=1.69, Min=0.75, Q1=0.938, Median=1.75, Q3=3.12, Max=5, Skewness=0.69, Kurtosis=-1.13.
+      The distribution of 's_max' appears positively skewed.
+      Silverman's bandwidth h≈0.4746
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+    - 'amplitude_s_true': Mean=1.25, Std=0.559, Min=0.5, Q1=0.875, Median=1.25, Q3=1.62, Max=2, Skewness=0.00, Kurtosis=-1.36.
+      The distribution of 'amplitude_s_true' appears approximately symmetric.
+      Silverman's bandwidth h≈0.157
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+    - 'optimal_g_mse': Mean=0.979, Std=0.0711, Min=0.7, Q1=1, Median=1, Q3=1, Max=1.2, Skewness=-2.33, Kurtosis=6.57.
+      The distribution of 'optimal_g_mse' appears negatively skewed.
+      Silverman's bandwidth h≈0.01996
+      Could not compute modality metrics: operands could not be broadcast together with shapes (769,) (768,) 
+      Dip p=nan; KDE peaks=nan
+
+    Pairwise Relationship Summary (from off-diagonal scatter plots):
+      Notable Pearson Correlations (absolute value > 0.5):
+        Could not compute dip/KDE for sigma_in_sq-k_gain: operands could not be broadcast together with shapes (769,) (768,) 
+      - sigma_in_sq vs k_gain: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for sigma_in_sq-alpha_gain_noise: operands could not be broadcast together with shapes (769,) (768,) 
+      - sigma_in_sq vs alpha_gain_noise: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for sigma_in_sq-s_max: operands could not be broadcast together with shapes (769,) (768,) 
+      - sigma_in_sq vs s_max: ρ=0.000, dCor=nan
+        Could not compute dip/KDE for sigma_in_sq-amplitude_s_true: operands could not be broadcast together with shapes (769,) (768,) 
+      - sigma_in_sq vs amplitude_s_true: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for sigma_in_sq-optimal_g_mse: operands could not be broadcast together with shapes (769,) (768,) 
+      - sigma_in_sq vs optimal_g_mse: ρ=-0.335, dCor=nan
+        Could not compute dip/KDE for k_gain-alpha_gain_noise: operands could not be broadcast together with shapes (769,) (768,) 
+      - k_gain vs alpha_gain_noise: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for k_gain-s_max: operands could not be broadcast together with shapes (769,) (768,) 
+      - k_gain vs s_max: ρ=0.000, dCor=nan
+        Could not compute dip/KDE for k_gain-amplitude_s_true: operands could not be broadcast together with shapes (769,) (768,) 
+      - k_gain vs amplitude_s_true: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for k_gain-optimal_g_mse: operands could not be broadcast together with shapes (769,) (768,) 
+      - k_gain vs optimal_g_mse: ρ=-0.008, dCor=nan
+        Could not compute dip/KDE for alpha_gain_noise-s_max: operands could not be broadcast together with shapes (769,) (768,) 
+      - alpha_gain_noise vs s_max: ρ=0.000, dCor=nan
+        Could not compute dip/KDE for alpha_gain_noise-amplitude_s_true: operands could not be broadcast together with shapes (769,) (768,) 
+      - alpha_gain_noise vs amplitude_s_true: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for alpha_gain_noise-optimal_g_mse: operands could not be broadcast together with shapes (769,) (768,) 
+      - alpha_gain_noise vs optimal_g_mse: ρ=0.000, dCor=nan
+        Could not compute dip/KDE for s_max-amplitude_s_true: operands could not be broadcast together with shapes (769,) (768,) 
+      - s_max vs amplitude_s_true: ρ=-0.000, dCor=nan
+        Could not compute dip/KDE for s_max-optimal_g_mse: operands could not be broadcast together with shapes (769,) (768,) 
+      - s_max vs optimal_g_mse: ρ=-0.094, dCor=nan
+        Could not compute dip/KDE for amplitude_s_true-optimal_g_mse: operands could not be broadcast together with shapes (769,) (768,) 
+      - amplitude_s_true vs optimal_g_mse: ρ=0.464, dCor=nan
+      - No pairs found with absolute correlation >= 0.5 among these variables.
+      Visual inspection of scatter plots is crucial for identifying non-linear relationships or patterns not captured by Pearson correlation.
+
+      Full Pearson correlation matrix:
+        ,sigma_in_sq,k_gain,alpha_gain_noise,s_max,amplitude_s_true,optimal_g_mse
+        sigma_in_sq,1.0,-2.719236378342482e-17,-8.685076678842464e-16,3.0617811648113775e-16,-1.0183812168749634e-15,-0.3347626068990456
+        k_gain,-2.719236378342482e-17,1.0,-7.354881496339897e-17,1.033331793249276e-16,-1.7477208152876988e-16,-0.007611684523068832
+        alpha_gain_noise,-8.685076678842464e-16,-7.354881496339897e-17,1.0,1.3411146390954465e-17,-5.0674516204067655e-17,1.9122029470123407e-16
+        s_max,3.0617811648113775e-16,1.033331793249276e-16,1.3411146390954465e-17,1.0,-4.040073070181365e-17,-0.09392999116483831
+        amplitude_s_true,-1.0183812168749634e-15,-1.7477208152876988e-16,-5.0674516204067655e-17,-4.040073070181365e-17,1.0,0.4638004532418296
+        optimal_g_mse,-0.3347626068990456,-0.007611684523068832,1.9122029470123407e-16,-0.09392999116483831,0.4638004532418296,1.0
+      Top 5 highest |ρ| pairs:
+        optimal_g_mse vs amplitude_s_true: 0.464
+        optimal_g_mse vs sigma_in_sq: 0.335
+        optimal_g_mse vs s_max: 0.094
+        optimal_g_mse vs k_gain: 0.008
+        amplitude_s_true vs sigma_in_sq: 0.000
+
+--- Heuristic Model Development ---
+Data split: Train/Validation set size: 614, Test set size: 154
+
+--- Model Training, Tuning, and Cross-Validation ---
+
+--- Training, Evaluating, and Tuning: Linear Regression ---
+  Evaluating with default parameters (no tuning)...
+  CV MSE mean±SD: 0.0032 ± 0.0008; MAE mean±SD: 0.0387 ± 0.0039; R² mean±SD: 0.2114 ± 0.3659
+  Coefficients: [-0.02761836  0.00453802  0.00321667  0.00291087  0.03089402 -0.01362113
+ -0.0102999  -0.00467087]
+  Intercept: 0.9805
+
+--- Training, Evaluating, and Tuning: Polynomial Regression (Deg=2) ---
+  Evaluating with default parameters (no tuning)...
+  CV MSE mean±SD: 0.0012 ± 0.0003; MAE mean±SD: 0.0241 ± 0.0018; R² mean±SD: 0.6783 ± 0.2082
+  Coefficients: [-0.03480094 -0.00114896  0.00253376 -0.00749689  0.03575283 -0.00952042
+ -0.00767285  0.00277196  0.01890401  0.00373115  0.00233541  0.00089814
+  0.03304257  0.02423129 -0.01721047 -0.00565732  0.01964198  0.01250896
+ -0.01272386  0.00826971 -0.00100322  0.01009916 -0.03996813  0.00038584
+ -0.0052375   0.00207892  0.0002021   0.00368677 -0.01025342 -0.00642997
+  0.02124515  0.00118674  0.03526424  0.01195105 -0.03661075  0.01364491
+ -0.02847805 -0.00607925  0.0045416  -0.00236596  0.0001751  -0.01934568
+ -0.00796993  0.01530041]
+  Intercept: 0.9864
+
+--- Training, Evaluating, and Tuning: Random Forest ---
+  Performing RandomizedSearchCV for hyperparameter tuning...
+  Best Tuned Parameters: {'n_estimators': 100, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_depth': 10}
+  Best Cross-Validated MSE (from tuning): 0.0005
+  CV MSE mean±SD: 0.0005 ± 0.0002; MAE mean±SD: 0.0076 ± 0.0022; R² mean±SD: 0.8945 ± 0.0308
+  Feature Importances (from model):
+input_snr_proxy                 0.845036
+saturation_headroom_ratio       0.049358
+sigma_in_sq                     0.038321
+gain_noise_sensitivity_proxy    0.023643
+s_max                           0.022764
+alpha_gain_noise                0.010174
+k_gain                          0.009055
+amplitude_s_true                0.001650
+
+--- Training, Evaluating, and Tuning: Gradient Boosting ---
+  Performing RandomizedSearchCV for hyperparameter tuning...
+  Best Tuned Parameters: {'subsample': 1.0, 'n_estimators': 50, 'max_depth': 5, 'learning_rate': 0.05}
+  Best Cross-Validated MSE (from tuning): 0.0005
+  CV MSE mean±SD: 0.0005 ± 0.0003; MAE mean±SD: 0.0094 ± 0.0024; R² mean±SD: 0.8844 ± 0.0494
+  Feature Importances (from model):
+input_snr_proxy                 0.890107
+sigma_in_sq                     0.035808
+saturation_headroom_ratio       0.032833
+gain_noise_sensitivity_proxy    0.017340
+s_max                           0.012751
+alpha_gain_noise                0.007036
+k_gain                          0.004125
+amplitude_s_true                0.000000
+
+--- Systematic Model Comparison (CV MSE on Train/Val set) ---
+Random Forest                    0.000463
+Gradient Boosting                0.000499
+Polynomial Regression (Deg=2)    0.001227
+Linear Regression                0.003220
+    Linear Regression CV fold metrics -> MSE mean±SD: 0.0032 ± 0.0008; RMSE mean±SD: 0.0563 ± 0.0069; MAE mean±SD: 0.0387 ± 0.0039; R² mean±SD: 0.2114 ± 0.3659
+    Polynomial Regression (Deg=2) CV fold metrics -> MSE mean±SD: 0.0012 ± 0.0003; RMSE mean±SD: 0.0348 ± 0.0040; MAE mean±SD: 0.0241 ± 0.0018; R² mean±SD: 0.6783 ± 0.2082
+    Random Forest CV fold metrics -> MSE mean±SD: 0.0005 ± 0.0002; RMSE mean±SD: 0.0211 ± 0.0046; MAE mean±SD: 0.0076 ± 0.0022; R² mean±SD: 0.8945 ± 0.0308
+    Gradient Boosting CV fold metrics -> MSE mean±SD: 0.0005 ± 0.0003; RMSE mean±SD: 0.0216 ± 0.0057; MAE mean±SD: 0.0094 ± 0.0024; R² mean±SD: 0.8844 ± 0.0494
+
+Selected best model based on CV MSE: Random Forest (CV MSE: 0.0005)
+Performance of 'Random Forest' on Hold-Out Test Set: MSE=0.0006, RMSE=0.0244, MAE=0.0085, R²=0.9032
+  DummyRegressor baseline MSE on test set: 0.0062
+  Bootstrap 95% CI for test RMSE: [0.0176, 0.0299]
+  Bootstrap 95% CI for test MSE: [0.0003, 0.0009]
+  Bootstrap 95% CI for test MAE: [0.0051, 0.0119]
+  Residuals: mean=-0.0006, SD=0.0244, skew=-0.20, kurtosis=8.52, Durbin-Watson=1.900, Levene p=0.000
+    Shapiro-Wilk p=0.000; Breusch-Pagan p=0.055
+    Cook's D 95th pct=0.1410, high leverage count=19
+  Computing permutation feature importance...
+    sigma_in_sq: 0.00014 ± 0.00008 (1.3% of total)
+    k_gain: -0.00001 ± 0.00004 (0.1% of total)
+    alpha_gain_noise: -0.00004 ± 0.00003 (0.4% of total)
+    s_max: 0.00001 ± 0.00005 (0.1% of total)
+    amplitude_s_true: 0.00000 ± 0.00001 (0.0% of total)
+    input_snr_proxy: 0.01023 ± 0.00114 (95.7% of total)
+    saturation_headroom_ratio: 0.00014 ± 0.00011 (1.4% of total)
+    gain_noise_sensitivity_proxy: -0.00010 ± 0.00004 (1.0% of total)
+Saved best model to results_experiment_5A_adaptive_heuristic\best_heuristic_model_Random_Forest.joblib
+Saved calibration curve to results_experiment_5A_adaptive_heuristic\calibration_curve.csv
+
+--- Characterizing Heuristic Model Behavior (Contour Plots) ---
+  Generating contour plot for features: 'input_snr_proxy' vs 'saturation_headroom_ratio' with other features at mean.
+  Contour plot saved to results_experiment_5A_adaptive_heuristic\heuristic_contour_plot.png
+FIG_contour_input_snr_proxy_vs_saturation_headroom_ratio: file=results_experiment_5A_adaptive_heuristic\heuristic_contour_plot.png, x=input_snr_proxy (6.25-4e+04), y=saturation_headroom_ratio (0.375-10), n=768
+FIG_contour_axes: x=[6.25,4e+04], y=[0.375,10]; n_points=768
+  Textual Summary of Contour Plot ('input_snr_proxy' vs. 'saturation_headroom_ratio'):
+    The plot visualizes the heuristic model's predicted 'optimal_g_mse' values.
+    'input_snr_proxy' (x-axis) ranges from 6.25 to 4e+04.
+    'saturation_headroom_ratio' (y-axis) ranges from 0.375 to 10.
+    Predicted 'optimal_g_mse' on this grid ranges from 0.776 to 1.000.
+    The minimum predicted 'optimal_g_mse' (0.776) occurs at approximately input_snr_proxy=3.03e+04 and saturation_headroom_ratio=0.375.
+    The maximum predicted 'optimal_g_mse' (1.000) occurs at approximately input_snr_proxy=6.25 and saturation_headroom_ratio=0.707.
+    Gradient magnitude at ~(0.25,0.25) of grid: 0.0000
+    Gradient magnitude at ~(0.25,0.75) of grid: 0.0000
+    Gradient magnitude at ~(0.75,0.25) of grid: 0.0000
+    Gradient magnitude at ~(0.75,0.75) of grid: 0.0000
+    Local quadratic fit around minimum: Z = a + b1*x + b2*y + c1*x^2 + c2*x*y + c3*y^2
+      Coefficients: a=1.2313, b1=-0.0001, b2=1.5835, c1=0.0000, c2=0.0000, c3=-1.0029
+    Gradient near grid center: d(optimal_g_mse)/dinput_snr_proxy ≈ 0.0000, d(optimal_g_mse)/dsaturation_headroom_ratio ≈ 0.0000.
+    Prediction absolute error: mean=0.0053, median=0.0000, 95th percentile=0.0373.
+    Fit quality on scatter points: R²=0.9487, RMSE=0.0161
+    Grid search found 0 local minimums.
+    Local curvature eigenvalues at global minimum: λ1=-1.0181, λ2=0.0000
+    ∇g magnitude over full grid: min=0.0000, median=0.0000, max=0.6758
+    ∇g magnitude in central 50%: min=0.0000, median=0.0000, max=0.0000
+    Region where predicted optimum ≤ 1.05×g* covers 3.3% of the domain (30 grid points).
+    FWHM_x≈4e+04, FWHM_y≈0; valley θ≈180.0°, area95≈3.3%
+    Valley width x=4e+04, y=0, orientation θ=180.0°
+    Valley eccentricity e=1.000; centroid≈(2e+04, 0.375)
+    Convex hull area of simulated optima: 244287.7902
+    Mean distance from hull centroid: 10631.3375, 95th percentile: 29662.9844
+    10x10 error grid RMSE: mean=0.0061, 95th pct=0.0221
+    Holding 'saturation_headroom_ratio' near its mid-range (5.4), predicted 'optimal_g_mse' shows a complex or flat trend as 'input_snr_proxy' increases.
+    Holding 'input_snr_proxy' near its mid-range (2.1e+04), predicted 'optimal_g_mse' tends to increase as 'saturation_headroom_ratio' increases.
+    Simulated 'optimal_g_mse' values from the original data sweep are overlaid as scatter points.
+    A visual inspection of the plot can help assess how well these simulated optima align with the model's predictions across the chosen feature plane.
+
+--- SHAP Value Analysis for Best Model ---
+  Using a sample of 100 points from X_train_val for SHAP explainer due to dataset size.
+SHAP summary plot saved to results_experiment_5A_adaptive_heuristic\shap_summary_plot.png
+FIG_shap_summary: file=results_experiment_5A_adaptive_heuristic\shap_summary_plot.png, n=100
+FIG_shap_summary_axes: x=[-0.2328,0.0341], y=[0,8]; n_points=100
+
+  Textual Summary of SHAP Value Analysis:
+    Global Feature Importance (based on mean absolute SHAP values):
+      1. input_snr_proxy: mean=0.0390, Q25=0.0272, Q75=0.0291; signed mean impact=0.0108 ± 0.0541; Δprediction per +1 SD ≈ 0.0000
+        Sign distribution: 0.89 >0, 0.11 <0; IQR=0.0022
+        Median impact=0.0279; skewness=-3.380
+        Min=-0.2328, Max=0.0341, %>|0.05|=11.0%
+      2. sigma_in_sq: mean=0.0056, Q25=0.0021, Q75=0.0063; signed mean impact=-0.0005 ± 0.0084; Δprediction per +1 SD ≈ -0.0286
+        Sign distribution: 0.27 >0, 0.73 <0; IQR=0.0038
+        Median impact=-0.0022; skewness=1.909
+        Min=-0.0140, Max=0.0330, %>|0.05|=0.0%
+      3. saturation_headroom_ratio: mean=0.0053, Q25=0.0027, Q75=0.0041; signed mean impact=-0.0010 ± 0.0071; Δprediction per +1 SD ≈ -0.0004
+        Sign distribution: 0.28 >0, 0.72 <0; IQR=0.0057
+        Median impact=-0.0030; skewness=1.641
+        Min=-0.0147, Max=0.0237, %>|0.05|=0.0%
+      4. gain_noise_sensitivity_proxy: mean=0.0019, Q25=0.0007, Q75=0.0019; signed mean impact=-0.0002 ± 0.0029; Δprediction per +1 SD ≈ -0.0036
+        Sign distribution: 0.55 >0, 0.45 <0; IQR=0.0026
+        Median impact=0.0004; skewness=-1.056
+        Min=-0.0135, Max=0.0102, %>|0.05|=0.0%
+      5. alpha_gain_noise: mean=0.0015, Q25=0.0005, Q75=0.0013; signed mean impact=-0.0004 ± 0.0027; Δprediction per +1 SD ≈ -0.0009
+        Sign distribution: 0.66 >0, 0.34 <0; IQR=0.0019
+        Median impact=0.0004; skewness=-2.786
+        Min=-0.0131, Max=0.0054, %>|0.05|=0.0%
+      6. k_gain: mean=0.0015, Q25=0.0007, Q75=0.0014; signed mean impact=-0.0001 ± 0.0026; Δprediction per +1 SD ≈ -0.0029
+        Sign distribution: 0.65 >0, 0.35 <0; IQR=0.0022
+        Median impact=0.0006; skewness=-2.147
+        Min=-0.0175, Max=0.0108, %>|0.05|=0.0%
+      7. s_max: mean=0.0011, Q25=0.0004, Q75=0.0011; signed mean impact=-0.0003 ± 0.0016; Δprediction per +1 SD ≈ -0.0002
+        Sign distribution: 0.34 >0, 0.66 <0; IQR=0.0012
+        Median impact=-0.0006; skewness=1.429
+        Min=-0.0040, Max=0.0072, %>|0.05|=0.0%
+      8. amplitude_s_true: mean=0.0001, Q25=0.0000, Q75=0.0001; signed mean impact=-0.0000 ± 0.0001; Δprediction per +1 SD ≈ -0.0000
+        Sign distribution: 0.63 >0, 0.37 <0; IQR=0.0001
+        Median impact=0.0000; skewness=-2.968
+        Min=-0.0009, Max=0.0004, %>|0.05|=0.0%
+
+    Cumulative |SHAP| captured by top-k features: 1:69.8%, 2:79.7%, 3:89.1%, 4:92.5%, 5:95.2%, 6:97.9%, 7:99.9%, 8:100.0%
+    Δprediction per +1 SD input_snr_proxy = +0.000 g (SHAP); Δprediction per +1 SD sigma_in_sq = -0.029 g (SHAP); Δprediction per +1 SD saturation_headroom_ratio = -0.000 g (SHAP)
+
+    Impact of Top Features on Predictions (qualitative, from SHAP values):
+    - input_snr_proxy: Impact direction is complex or weak (correlation: 0.16). High/low values do not consistently push prediction one way.
+    - sigma_in_sq: Higher values of 'sigma_in_sq' tend to increase the prediction (correlation: 0.71).
+    - saturation_headroom_ratio: Higher values of 'saturation_headroom_ratio' tend to decrease the prediction (correlation: -0.35).
+    - gain_noise_sensitivity_proxy: Impact direction is complex or weak (correlation: -0.07). High/low values do not consistently push prediction one way.
+    - alpha_gain_noise: Higher values of 'alpha_gain_noise' tend to increase the prediction (correlation: 0.60).
+    (Impact descriptions shown for top 5 features. Full importance list above.)
+
+    Top SHAP Interaction Effects:
+      sigma_in_sq × saturation_headroom_ratio: mean |ϕ|=0.0033
+      input_snr_proxy × saturation_headroom_ratio: mean |ϕ|=0.0025
+      sigma_in_sq × gain_noise_sensitivity_proxy: mean |ϕ|=0.0010
+      sigma_in_sq × input_snr_proxy: mean |ϕ|=0.0009
+      s_max × input_snr_proxy: mean |ϕ|=0.0009
+
+    SHAP value change across feature quantiles:
+      input_snr_proxy: SHAP at 10th=-0.1281, 50th=0.0281, 90th=0.0281
+      sigma_in_sq: SHAP at 10th=-0.0041, 50th=-0.0043, 90th=0.0095
+      saturation_headroom_ratio: SHAP at 10th=0.0065, 50th=-0.0068, 90th=-0.0033
+      gain_noise_sensitivity_proxy: SHAP at 10th=-0.0026, 50th=0.0014, 90th=-0.0031
+      alpha_gain_noise: SHAP at 10th=-0.0029, 50th=0.0005, 90th=0.0011
+
+--- Experiment End ---
+Total script execution time: 22.54 seconds (0.38 minutes).
+
+--- Operating Conditions for Heuristic ---
+The developed heuristic model is trained on the parameter ranges defined in 'param_grid'.
+Its predictions are most reliable within these ranges. Extrapolation should be done with caution.
+Timestamp: 2025-06-02 05:05:27
+
+--- Numerical Summary Table ---
+FIGURE, METRIC, VALUE
+Dispersion_sigma_in_sq, 0.0001_SD, 0.0
+Dispersion_sigma_in_sq, 0.0001_IQR, 0.0
+Dispersion_sigma_in_sq, 0.0001_Out_n, 0
+Dispersion_sigma_in_sq, 0.0025000000000000005_SD, 0.0
+Dispersion_sigma_in_sq, 0.0025000000000000005_IQR, 0.0
+Dispersion_sigma_in_sq, 0.0025000000000000005_Out_n, 0
+Dispersion_sigma_in_sq, 0.010000000000000002_SD, 0.04341447631754525
+Dispersion_sigma_in_sq, 0.010000000000000002_IQR, 0.025000000000000022
+Dispersion_sigma_in_sq, 0.010000000000000002_Out_n, 48
+Dispersion_sigma_in_sq, 0.04000000000000001_SD, 0.12663847624210228
+Dispersion_sigma_in_sq, 0.04000000000000001_IQR, 0.125
+Dispersion_sigma_in_sq, 0.04000000000000001_Out_n, 1
+Dispersion_k_gain, 0.001_SD, 0.07285134820597057
+Dispersion_k_gain, 0.001_IQR, 0.0
+Dispersion_k_gain, 0.001_Out_n, 35
+Dispersion_k_gain, 0.01_SD, 0.06752084223501402
+Dispersion_k_gain, 0.01_IQR, 0.0
+Dispersion_k_gain, 0.01_Out_n, 36
+Dispersion_k_gain, 0.05_SD, 0.06888027083495447
+Dispersion_k_gain, 0.05_IQR, 0.0
+Dispersion_k_gain, 0.05_Out_n, 41
+Dispersion_k_gain, 0.1_SD, 0.07535366005556485
+Dispersion_k_gain, 0.1_IQR, 0.0
+Dispersion_k_gain, 0.1_Out_n, 38
+Dispersion_alpha_gain_noise, 1.0_SD, 0.07117600216585451
+Dispersion_alpha_gain_noise, 1.0_IQR, 0.0
+Dispersion_alpha_gain_noise, 1.0_Out_n, 48
+Dispersion_alpha_gain_noise, 1.5_SD, 0.07013642168701524
+Dispersion_alpha_gain_noise, 1.5_IQR, 0.0
+Dispersion_alpha_gain_noise, 1.5_Out_n, 53
+Dispersion_alpha_gain_noise, 2.0_SD, 0.07226953735434982
+Dispersion_alpha_gain_noise, 2.0_IQR, 0.0
+Dispersion_alpha_gain_noise, 2.0_Out_n, 49
+Dispersion_s_max, 0.75_SD, 0.07488902493587708
+Dispersion_s_max, 0.75_IQR, 0.0
+Dispersion_s_max, 0.75_Out_n, 45
+Dispersion_s_max, 1.0_SD, 0.06813394056484288
+Dispersion_s_max, 1.0_IQR, 0.0
+Dispersion_s_max, 1.0_Out_n, 33
+Dispersion_s_max, 2.5_SD, 0.0692769941591057
+Dispersion_s_max, 2.5_IQR, 0.0
+Dispersion_s_max, 2.5_Out_n, 37
+Dispersion_s_max, 5.0_SD, 0.07061613347638994
+Dispersion_s_max, 5.0_IQR, 0.0
+Dispersion_s_max, 5.0_Out_n, 35
+Dispersion_amplitude_s_true, 0.5_SD, 0.10640355652508389
+Dispersion_amplitude_s_true, 0.5_IQR, 0.125
+Dispersion_amplitude_s_true, 0.5_Out_n, 0
+Dispersion_amplitude_s_true, 1.0_SD, 0.04027338946225359
+Dispersion_amplitude_s_true, 1.0_IQR, 0.0
+Dispersion_amplitude_s_true, 1.0_Out_n, 32
+Dispersion_amplitude_s_true, 1.5_SD, 0.025662045435160274
+Dispersion_amplitude_s_true, 1.5_IQR, 0.0
+Dispersion_amplitude_s_true, 1.5_Out_n, 10
+Dispersion_amplitude_s_true, 2.0_SD, 0.024269430063396494
+Dispersion_amplitude_s_true, 2.0_IQR, 0.0
+Dispersion_amplitude_s_true, 2.0_Out_n, 12
+Quantile_sigma_in_sq, 0.0001_q10, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0001_q25, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0001_q50, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0001_q75, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0001_q90, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0025000000000000005_q10, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0025000000000000005_q25, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0025000000000000005_q50, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0025000000000000005_q75, 0.9999999999999999
+Quantile_sigma_in_sq, 0.0025000000000000005_q90, 0.9999999999999999
+Quantile_sigma_in_sq, 0.010000000000000002_q10, 0.8999999999999999
+Quantile_sigma_in_sq, 0.010000000000000002_q25, 0.9749999999999999
+Quantile_sigma_in_sq, 0.010000000000000002_q50, 0.9999999999999999
+Quantile_sigma_in_sq, 0.010000000000000002_q75, 0.9999999999999999
+Quantile_sigma_in_sq, 0.010000000000000002_q90, 0.9999999999999999
+Quantile_sigma_in_sq, 0.04000000000000001_q10, 0.7
+Quantile_sigma_in_sq, 0.04000000000000001_q25, 0.8749999999999999
+Quantile_sigma_in_sq, 0.04000000000000001_q50, 0.9999999999999999
+Quantile_sigma_in_sq, 0.04000000000000001_q75, 0.9999999999999999
+Quantile_sigma_in_sq, 0.04000000000000001_q90, 1.0999999999999999
+Quantile_k_gain, 0.001_q10, 0.8999999999999999
+Quantile_k_gain, 0.001_q25, 0.9999999999999999
+Quantile_k_gain, 0.001_q50, 0.9999999999999999
+Quantile_k_gain, 0.001_q75, 0.9999999999999999
+Quantile_k_gain, 0.001_q90, 0.9999999999999999
+Quantile_k_gain, 0.01_q10, 0.8999999999999999
+Quantile_k_gain, 0.01_q25, 0.9999999999999999
+Quantile_k_gain, 0.01_q50, 0.9999999999999999
+Quantile_k_gain, 0.01_q75, 0.9999999999999999
+Quantile_k_gain, 0.01_q90, 0.9999999999999999
+Quantile_k_gain, 0.05_q10, 0.8999999999999999
+Quantile_k_gain, 0.05_q25, 0.9999999999999999
+Quantile_k_gain, 0.05_q50, 0.9999999999999999
+Quantile_k_gain, 0.05_q75, 0.9999999999999999
+Quantile_k_gain, 0.05_q90, 0.9999999999999999
+Quantile_k_gain, 0.1_q10, 0.8999999999999999
+Quantile_k_gain, 0.1_q25, 0.9999999999999999
+Quantile_k_gain, 0.1_q50, 0.9999999999999999
+Quantile_k_gain, 0.1_q75, 0.9999999999999999
+Quantile_k_gain, 0.1_q90, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.0_q10, 0.8999999999999999
+Quantile_alpha_gain_noise, 1.0_q25, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.0_q50, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.0_q75, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.0_q90, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.5_q10, 0.8999999999999999
+Quantile_alpha_gain_noise, 1.5_q25, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.5_q50, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.5_q75, 0.9999999999999999
+Quantile_alpha_gain_noise, 1.5_q90, 0.9999999999999999
+Quantile_alpha_gain_noise, 2.0_q10, 0.8999999999999999
+Quantile_alpha_gain_noise, 2.0_q25, 0.9999999999999999
+Quantile_alpha_gain_noise, 2.0_q50, 0.9999999999999999
+Quantile_alpha_gain_noise, 2.0_q75, 0.9999999999999999
+Quantile_alpha_gain_noise, 2.0_q90, 0.9999999999999999
+Quantile_s_max, 0.75_q10, 0.8999999999999999
+Quantile_s_max, 0.75_q25, 0.9999999999999999
+Quantile_s_max, 0.75_q50, 0.9999999999999999
+Quantile_s_max, 0.75_q75, 0.9999999999999999
+Quantile_s_max, 0.75_q90, 1.0999999999999999
+Quantile_s_max, 1.0_q10, 0.8999999999999999
+Quantile_s_max, 1.0_q25, 0.9999999999999999
+Quantile_s_max, 1.0_q50, 0.9999999999999999
+Quantile_s_max, 1.0_q75, 0.9999999999999999
+Quantile_s_max, 1.0_q90, 0.9999999999999999
+Quantile_s_max, 2.5_q10, 0.8999999999999999
+Quantile_s_max, 2.5_q25, 0.9999999999999999
+Quantile_s_max, 2.5_q50, 0.9999999999999999
+Quantile_s_max, 2.5_q75, 0.9999999999999999
+Quantile_s_max, 2.5_q90, 0.9999999999999999
+Quantile_s_max, 5.0_q10, 0.8999999999999999
+Quantile_s_max, 5.0_q25, 0.9999999999999999
+Quantile_s_max, 5.0_q50, 0.9999999999999999
+Quantile_s_max, 5.0_q75, 0.9999999999999999
+Quantile_s_max, 5.0_q90, 0.9999999999999999
+Quantile_amplitude_s_true, 0.5_q10, 0.7
+Quantile_amplitude_s_true, 0.5_q25, 0.8749999999999999
+Quantile_amplitude_s_true, 0.5_q50, 0.95
+Quantile_amplitude_s_true, 0.5_q75, 0.9999999999999999
+Quantile_amplitude_s_true, 0.5_q90, 0.9999999999999999
+Quantile_amplitude_s_true, 1.0_q10, 0.8999999999999999
+Quantile_amplitude_s_true, 1.0_q25, 0.9999999999999999
+Quantile_amplitude_s_true, 1.0_q50, 0.9999999999999999
+Quantile_amplitude_s_true, 1.0_q75, 0.9999999999999999
+Quantile_amplitude_s_true, 1.0_q90, 0.9999999999999999
+Quantile_amplitude_s_true, 1.5_q10, 0.9999999999999999
+Quantile_amplitude_s_true, 1.5_q25, 0.9999999999999999
+Quantile_amplitude_s_true, 1.5_q50, 0.9999999999999999
+Quantile_amplitude_s_true, 1.5_q75, 0.9999999999999999
+Quantile_amplitude_s_true, 1.5_q90, 0.9999999999999999
+Quantile_amplitude_s_true, 2.0_q10, 0.9999999999999999
+Quantile_amplitude_s_true, 2.0_q25, 0.9999999999999999
+Quantile_amplitude_s_true, 2.0_q50, 0.9999999999999999
+Quantile_amplitude_s_true, 2.0_q75, 0.9999999999999999
+Quantile_amplitude_s_true, 2.0_q90, 0.9999999999999999
+ANOVA_eta2, sigma_in_sq, 0.25631045057796653
+ANOVA_eta2_low, sigma_in_sq, 1.303344385697155e-06
+ANOVA_eta2_high, sigma_in_sq, 0.006645288943935657
+ANOVA_eta2, k_gain, 0.00015857913098636222
+ANOVA_eta2_low, k_gain, 1.303344385697155e-06
+ANOVA_eta2_high, k_gain, 0.006645288943935657
+ANOVA_eta2, alpha_gain_noise, 0.0
+ANOVA_eta2_low, alpha_gain_noise, 1.303344385697155e-06
+ANOVA_eta2_high, alpha_gain_noise, 0.006645288943935657
+ANOVA_eta2, s_max, 0.026405188387893765
+ANOVA_eta2_low, s_max, 1.303344385697155e-06
+ANOVA_eta2_high, s_max, 0.006645288943935657
+ANOVA_eta2, amplitude_s_true, 0.3981768720469623
+ANOVA_eta2_low, amplitude_s_true, 1.303344385697155e-06
+ANOVA_eta2_high, amplitude_s_true, 0.006645288943935657
+ANOVA_eta2, sigma_in_sq:k_gain, 0.0004755865567533291
+ANOVA_eta2_low, sigma_in_sq:k_gain, 1.303344385697155e-06
+ANOVA_eta2_high, sigma_in_sq:k_gain, 0.006645288943935657
+ANOVA_eta2, sigma_in_sq:alpha_gain_noise, 0.0
+ANOVA_eta2_low, sigma_in_sq:alpha_gain_noise, 1.303344385697155e-06
+ANOVA_eta2_high, sigma_in_sq:alpha_gain_noise, 0.006645288943935657
+ANOVA_eta2, sigma_in_sq:s_max, 0.07163365972171097
+ANOVA_eta2_low, sigma_in_sq:s_max, 1.303344385697155e-06
+ANOVA_eta2_high, sigma_in_sq:s_max, 0.006645288943935657
+ANOVA_eta2, sigma_in_sq:amplitude_s_true, 0.49064910934281214
+ANOVA_eta2_low, sigma_in_sq:amplitude_s_true, 1.303344385697155e-06
+ANOVA_eta2_high, sigma_in_sq:amplitude_s_true, 0.006645288943935657
+ANOVA_eta2, k_gain:alpha_gain_noise, 0.00023784983746927773
+ANOVA_eta2_low, k_gain:alpha_gain_noise, 1.303344385697155e-06
+ANOVA_eta2_high, k_gain:alpha_gain_noise, 0.006645288943935657
+ANOVA_eta2, k_gain:s_max, 0.0
+ANOVA_eta2_low, k_gain:s_max, 1.303344385697155e-06
+ANOVA_eta2_high, k_gain:s_max, 0.006645288943935657
+ANOVA_eta2, k_gain:amplitude_s_true, 0.0007132102385292021
+ANOVA_eta2_low, k_gain:amplitude_s_true, 1.303344385697155e-06
+ANOVA_eta2_high, k_gain:amplitude_s_true, 0.006645288943935657
+ANOVA_eta2, alpha_gain_noise:s_max, 0.0
+ANOVA_eta2_low, alpha_gain_noise:s_max, 1.303344385697155e-06
+ANOVA_eta2_high, alpha_gain_noise:s_max, 0.006645288943935657
+ANOVA_eta2, alpha_gain_noise:amplitude_s_true, 7.929585282689716e-05
+ANOVA_eta2_low, alpha_gain_noise:amplitude_s_true, 1.303344385697155e-06
+ANOVA_eta2_high, alpha_gain_noise:amplitude_s_true, 0.006645288943935657
+ANOVA_eta2, s_max:amplitude_s_true, 0.0
+ANOVA_eta2_low, s_max:amplitude_s_true, 1.303344385697155e-06
+ANOVA_eta2_high, s_max:amplitude_s_true, 0.006645288943935657
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.01, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.5, 0.19089659485559451
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.0, s_max=1.0, amplitude_s_true=1.0, 0.1861124942686221
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.1, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0, 0.18467801298493436
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0, 0.18337736792483883
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.5, s_max=0.75, amplitude_s_true=1.0, 0.1828312369579882
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.05, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0, 0.18228510599113745
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=1.0, s_max=0.75, amplitude_s_true=1.0, 0.1799400571372164
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.01, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0, 0.17979862211985986
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=1.5, s_max=0.75, amplitude_s_true=1.0, 0.17946673072547792
+ANOVA_resid, sigma_in_sq=0.04000000000000001, k_gain=0.001, alpha_gain_noise=2.0, s_max=0.75, amplitude_s_true=1.0, 0.17899340431373945
+Target, Plateau_pct, 84.375
+Scatter_sigma_in_sq, Monotonic, False
+Scatter_sigma_in_sq, LOWESS_slopes, [-3.309490902456517e-13, nan, 50.00000000000005, 8.75000000000001, nan, nan, nan, nan, nan, nan]
+Scatter_sigma_in_sq, BP_raw_p, 1.0233040720324058e-17
+Scatter_sigma_in_sq, VarScale, inf
+Scatter_sigma_in_sq, dCor, 0.470207627286703
+Scatter_sigma_in_sq, HullArea, 0.010485000000000003
+Scatter_sigma_in_sq, EllW1, 0.3491352513805243
+Scatter_sigma_in_sq, EllW2, 0.07330026345574127
+Scatter_sigma_in_sq, EllTheta, 94.48887272269742
+Scatter_k_gain, Monotonic, False
+Scatter_k_gain, LOWESS_slopes, [-1.0935629975719881e-13, nan, 10.000000000000016, 4.999999999999976, nan, nan, nan, nan, nan, nan]
+Scatter_k_gain, dCor, 0.02304918450254645
+Scatter_k_gain, HullArea, 0.044550000000000006
+Scatter_k_gain, EllW1, 0.3481159564286421
+Scatter_k_gain, EllW2, 0.19161684925510367
+Scatter_k_gain, EllTheta, 90.34442399620099
+Scatter_alpha_gain_noise, Monotonic, False
+Scatter_alpha_gain_noise, LOWESS_slopes, [0.20000000000000054, 0.24999999999999994, nan, nan, nan, nan, nan, nan, nan, nan]
+Scatter_alpha_gain_noise, dCor, 0.01092852515487399
+Scatter_alpha_gain_noise, HullArea, 0.45
+Scatter_alpha_gain_noise, EllW1, 1.9998793471166805
+Scatter_alpha_gain_noise, EllW2, 0.3481115723756453
+Scatter_alpha_gain_noise, EllTheta, 0.0
+Scatter_s_max, Monotonic, False
+Scatter_s_max, LOWESS_slopes, [-7.522482674208696e-15, nan, 0.20000000000000037, 0.10000000000000014, nan, nan, nan, nan, nan, nan]
+Scatter_s_max, dCor, 0.10542366883763969
+Scatter_s_max, HullArea, 1.7000000000000002
+Scatter_s_max, EllW1, 8.277925633920978
+Scatter_s_max, EllW2, 0.34656979468820137
+Scatter_s_max, EllTheta, 179.7732815293062
+Scatter_amplitude_s_true, Monotonic, False
+Scatter_amplitude_s_true, LOWESS_slopes, [0.19999999999999518, nan, 0.3333333333333323, 0.24999999999999917, nan, nan, nan, nan, nan, nan]
+Scatter_amplitude_s_true, dCor, 0.48897411351374126
+Scatter_amplitude_s_true, HullArea, 0.3999999999999999
+Scatter_amplitude_s_true, EllW1, 2.7432638053470138
+Scatter_amplitude_s_true, EllW2, 0.3078644048352567
+Scatter_amplitude_s_true, EllTheta, -176.58275242807994
+Pair_sigma_in_sq, Silverman_h, 0.004473295230293631
+Pair_sigma_in_sq, Dip_p, nan
+Pair_sigma_in_sq, KDE_peaks, nan
+Pair_k_gain, Silverman_h, 0.010987246656685273
+Pair_k_gain, Dip_p, nan
+Pair_k_gain, KDE_peaks, nan
+Pair_alpha_gain_noise, Silverman_h, 0.11466765315368664
+Pair_alpha_gain_noise, Dip_p, nan
+Pair_alpha_gain_noise, KDE_peaks, nan
+Pair_s_max, Silverman_h, 0.47463007635506893
+Pair_s_max, Dip_p, nan
+Pair_s_max, KDE_peaks, nan
+Pair_amplitude_s_true, Silverman_h, 0.15701515062113144
+Pair_amplitude_s_true, Dip_p, nan
+Pair_amplitude_s_true, KDE_peaks, nan
+Pair_optimal_g_mse, Silverman_h, 0.01995977262203611
+Pair_optimal_g_mse, Dip_p, nan
+Pair_optimal_g_mse, KDE_peaks, nan
+Pair_sigma_in_sq_k_gain, Dip_p, nan
+Pair_sigma_in_sq_k_gain, KDE_peaks, nan
+Pair_sigma_in_sq_k_gain, dCor, nan
+Pair_sigma_in_sq_alpha_gain_noise, Dip_p, nan
+Pair_sigma_in_sq_alpha_gain_noise, KDE_peaks, nan
+Pair_sigma_in_sq_alpha_gain_noise, dCor, nan
+Pair_sigma_in_sq_s_max, Dip_p, nan
+Pair_sigma_in_sq_s_max, KDE_peaks, nan
+Pair_sigma_in_sq_s_max, dCor, nan
+Pair_sigma_in_sq_amplitude_s_true, Dip_p, nan
+Pair_sigma_in_sq_amplitude_s_true, KDE_peaks, nan
+Pair_sigma_in_sq_amplitude_s_true, dCor, nan
+Pair_sigma_in_sq_optimal_g_mse, Dip_p, nan
+Pair_sigma_in_sq_optimal_g_mse, KDE_peaks, nan
+Pair_sigma_in_sq_optimal_g_mse, dCor, nan
+Pair_k_gain_alpha_gain_noise, Dip_p, nan
+Pair_k_gain_alpha_gain_noise, KDE_peaks, nan
+Pair_k_gain_alpha_gain_noise, dCor, nan
+Pair_k_gain_s_max, Dip_p, nan
+Pair_k_gain_s_max, KDE_peaks, nan
+Pair_k_gain_s_max, dCor, nan
+Pair_k_gain_amplitude_s_true, Dip_p, nan
+Pair_k_gain_amplitude_s_true, KDE_peaks, nan
+Pair_k_gain_amplitude_s_true, dCor, nan
+Pair_k_gain_optimal_g_mse, Dip_p, nan
+Pair_k_gain_optimal_g_mse, KDE_peaks, nan
+Pair_k_gain_optimal_g_mse, dCor, nan
+Pair_alpha_gain_noise_s_max, Dip_p, nan
+Pair_alpha_gain_noise_s_max, KDE_peaks, nan
+Pair_alpha_gain_noise_s_max, dCor, nan
+Pair_alpha_gain_noise_amplitude_s_true, Dip_p, nan
+Pair_alpha_gain_noise_amplitude_s_true, KDE_peaks, nan
+Pair_alpha_gain_noise_amplitude_s_true, dCor, nan
+Pair_alpha_gain_noise_optimal_g_mse, Dip_p, nan
+Pair_alpha_gain_noise_optimal_g_mse, KDE_peaks, nan
+Pair_alpha_gain_noise_optimal_g_mse, dCor, nan
+Pair_s_max_amplitude_s_true, Dip_p, nan
+Pair_s_max_amplitude_s_true, KDE_peaks, nan
+Pair_s_max_amplitude_s_true, dCor, nan
+Pair_s_max_optimal_g_mse, Dip_p, nan
+Pair_s_max_optimal_g_mse, KDE_peaks, nan
+Pair_s_max_optimal_g_mse, dCor, nan
+Pair_amplitude_s_true_optimal_g_mse, Dip_p, nan
+Pair_amplitude_s_true_optimal_g_mse, KDE_peaks, nan
+Pair_amplitude_s_true_optimal_g_mse, dCor, nan
+Baseline, Dummy_MSE, 0.006199048858281311
+Residuals, BP_R2, 3.7288942610599554
+Residuals, CooksD95, 0.1410432006184863
+Residuals, HighLeverage, 19
+PermImp, sigma_in_sq, 1.3490644261002402
+PermImp, k_gain, 0.11558487167788116
+PermImp, alpha_gain_noise, 0.36505062549577144
+PermImp, s_max, 0.13659714025473438
+PermImp, amplitude_s_true, 0.038560861754172976
+PermImp, input_snr_proxy, 95.67196606889785
+PermImp, saturation_headroom_ratio, 1.3519250324560954
+PermImp, gain_noise_sensitivity_proxy, 0.9712509733632607
+Calibration, n_bins, 3
+Contour, FWHMx, 39993.35000415621
+Contour, FWHMy, 0.0
+Contour, Valley_theta_deg, 179.99999929261037
+Contour, Area95_pct, 3.3333333333333335
+Contour, Valley_width_x, 39993.35000415621
+Contour, Valley_width_y, 0.0
+Contour, N_pts_within_5pct, 30
+Contour, Eccentricity, 0.9999999706259738
+Contour, Centroid_x, 20002.925001921853
+Contour, Centroid_y, 0.3749999998125
+Contour, Hull_area, 244287.79021079303
+Contour, Hull_mean_dist, 10631.337460236955
+Contour, Hull_dist_95th, 29662.984388055702
+Contour, RMSEgrid_mean, 0.006060244304163094
+Contour, RMSEgrid_95th, 0.02209519278727184
+SHAP_input_snr_proxy, Frac_pos, 0.89
+SHAP_input_snr_proxy, Frac_neg, 0.11
+SHAP_input_snr_proxy, IQR, 0.002153982713862204
+SHAP_input_snr_proxy, Median, 0.027862209868035278
+SHAP_input_snr_proxy, Skew, -3.380050921065931
+SHAP_input_snr_proxy, Min, -0.23278081439435483
+SHAP_input_snr_proxy, Max, 0.03408897306304425
+SHAP_input_snr_proxy, Pct_gt_0.05, 11.0
+SHAP_sigma_in_sq, Frac_pos, 0.27
+SHAP_sigma_in_sq, Frac_neg, 0.73
+SHAP_sigma_in_sq, IQR, 0.0038264363241614775
+SHAP_sigma_in_sq, Median, -0.0021514117973856625
+SHAP_sigma_in_sq, Skew, 1.9094122064260053
+SHAP_sigma_in_sq, Min, -0.013991267692763359
+SHAP_sigma_in_sq, Max, 0.032952487478032706
+SHAP_sigma_in_sq, Pct_gt_0.05, 0.0
+SHAP_saturation_headroom_ratio, Frac_pos, 0.28
+SHAP_saturation_headroom_ratio, Frac_neg, 0.72
+SHAP_saturation_headroom_ratio, IQR, 0.005688339665503008
+SHAP_saturation_headroom_ratio, Median, -0.0030243924213573335
+SHAP_saturation_headroom_ratio, Skew, 1.6413824491720934
+SHAP_saturation_headroom_ratio, Min, -0.014674574536038563
+SHAP_saturation_headroom_ratio, Max, 0.02373685634986032
+SHAP_saturation_headroom_ratio, Pct_gt_0.05, 0.0
+SHAP_gain_noise_sensitivity_proxy, Frac_pos, 0.55
+SHAP_gain_noise_sensitivity_proxy, Frac_neg, 0.45
+SHAP_gain_noise_sensitivity_proxy, IQR, 0.002557852372083289
+SHAP_gain_noise_sensitivity_proxy, Median, 0.0003760862543276744
+SHAP_gain_noise_sensitivity_proxy, Skew, -1.0564044295282788
+SHAP_gain_noise_sensitivity_proxy, Min, -0.013526138439192436
+SHAP_gain_noise_sensitivity_proxy, Max, 0.010151786421774887
+SHAP_gain_noise_sensitivity_proxy, Pct_gt_0.05, 0.0
+SHAP_alpha_gain_noise, Frac_pos, 0.66
+SHAP_alpha_gain_noise, Frac_neg, 0.34
+SHAP_alpha_gain_noise, IQR, 0.001939369553438155
+SHAP_alpha_gain_noise, Median, 0.0003518300960422494
+SHAP_alpha_gain_noise, Skew, -2.785758594454716
+SHAP_alpha_gain_noise, Min, -0.013086572899774183
+SHAP_alpha_gain_noise, Max, 0.005353206321597099
+SHAP_alpha_gain_noise, Pct_gt_0.05, 0.0
+SHAP_k_gain, Frac_pos, 0.65
+SHAP_k_gain, Frac_neg, 0.35
+SHAP_k_gain, IQR, 0.0021665669337744475
+SHAP_k_gain, Median, 0.0005892217982182047
+SHAP_k_gain, Skew, -2.146733336372685
+SHAP_k_gain, Min, -0.017546708702575416
+SHAP_k_gain, Max, 0.010840389462246094
+SHAP_k_gain, Pct_gt_0.05, 0.0
+SHAP_s_max, Frac_pos, 0.34
+SHAP_s_max, Frac_neg, 0.66
+SHAP_s_max, IQR, 0.0011847198085160925
+SHAP_s_max, Median, -0.0005862681764847366
+SHAP_s_max, Skew, 1.4287789023120447
+SHAP_s_max, Min, -0.003990853005961981
+SHAP_s_max, Max, 0.007206228206050582
+SHAP_s_max, Pct_gt_0.05, 0.0
+SHAP_amplitude_s_true, Frac_pos, 0.63
+SHAP_amplitude_s_true, Frac_neg, 0.37
+SHAP_amplitude_s_true, IQR, 7.422641312587074e-05
+SHAP_amplitude_s_true, Median, 2.0745688161696307e-05
+SHAP_amplitude_s_true, Skew, -2.9676358066352524
+SHAP_amplitude_s_true, Min, -0.0008651321360957809
+SHAP_amplitude_s_true, Max, 0.00040625148118124345
+SHAP_amplitude_s_true, Pct_gt_0.05, 0.0
