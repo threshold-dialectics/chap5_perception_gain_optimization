@@ -1,6 +1,19 @@
 #experiment_1.py
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Double all default font sizes for clearer figures
+BASE_FONT_SIZE = plt.rcParams.get("font.size", 10) * 2
+for key in [
+    "font.size",
+    "axes.labelsize",
+    "axes.titlesize",
+    "xtick.labelsize",
+    "ytick.labelsize",
+    "legend.fontsize",
+    "figure.titlesize",
+]:
+    plt.rcParams[key] = BASE_FONT_SIZE
 import os
 
 # --- Simulation Parameters ---

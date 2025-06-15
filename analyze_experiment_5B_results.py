@@ -1,6 +1,19 @@
 # analyze_experiment_2_results.py
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Double all default font sizes for analysis figures
+BASE_FONT_SIZE = plt.rcParams.get("font.size", 10) * 2
+for key in [
+    "font.size",
+    "axes.labelsize",
+    "axes.titlesize",
+    "xtick.labelsize",
+    "ytick.labelsize",
+    "legend.fontsize",
+    "figure.titlesize",
+]:
+    plt.rcParams[key] = BASE_FONT_SIZE
 import pandas as pd
 import seaborn as sns
 import os
@@ -202,7 +215,7 @@ def perform_eda_exp2(df, original_param_keys_for_eda, engineered_feature_keys, t
             if feat_name in df.columns and idx < len(axes_scatter_orig) and df[feat_name].notna().any() and df[target].notna().any():
                 axes_scatter_orig[idx].scatter(df[feat_name], df[target], alpha=0.3, s=10)
                 axes_scatter_orig[idx].set_xlabel(feat_name); axes_scatter_orig[idx].set_ylabel(target)
-                axes_scatter_orig[idx].set_title(f'{target} vs. {feat_name}', fontsize=10); axes_scatter_orig[idx].grid(True, alpha=0.3)
+                axes_scatter_orig[idx].set_title(f'{target} vs. {feat_name}', fontsize=20); axes_scatter_orig[idx].grid(True, alpha=0.3)
         for i in range(num_orig_features, len(axes_scatter_orig)): fig_scatter_orig.delaxes(axes_scatter_orig[i])
         plt.tight_layout(); scatter_path_orig = os.path.join(results_folder, f"{target}_vs_original_features_for_modeling.png")
         plt.savefig(scatter_path_orig); plt.close(fig_scatter_orig); plt.close('all')
@@ -220,7 +233,7 @@ def perform_eda_exp2(df, original_param_keys_for_eda, engineered_feature_keys, t
                 if feat_name in df.columns and idx < len(axes_scatter_eng) and df[feat_name].notna().any() and df[target].notna().any():
                     axes_scatter_eng[idx].scatter(df[feat_name], df[target], alpha=0.3, s=10)
                     axes_scatter_eng[idx].set_xlabel(feat_name); axes_scatter_eng[idx].set_ylabel(target)
-                    axes_scatter_eng[idx].set_title(f'{target} vs. {feat_name}', fontsize=10); axes_scatter_eng[idx].grid(True, alpha=0.3)
+                    axes_scatter_eng[idx].set_title(f'{target} vs. {feat_name}', fontsize=20); axes_scatter_eng[idx].grid(True, alpha=0.3)
             for i in range(num_eng_features, len(axes_scatter_eng)): fig_scatter_eng.delaxes(axes_scatter_eng[i])
             plt.tight_layout(); scatter_path_eng = os.path.join(results_folder, f"{target}_vs_engineered_features.png")
             plt.savefig(scatter_path_eng); plt.close(fig_scatter_eng); plt.close('all')
@@ -238,7 +251,7 @@ def perform_eda_exp2(df, original_param_keys_for_eda, engineered_feature_keys, t
             if pair_plot_df_sample.var().gt(0).sum() > 1:
                 try:
                     sns.pairplot(pair_plot_df_sample, kind='scatter', diag_kind='kde', corner=True, plot_kws={'alpha':0.4, 's':15})
-                    plt.suptitle(f'Pair Plot of Selected Features and {target} (Sampled)', y=1.02, fontsize=12)
+                    plt.suptitle(f'Pair Plot of Selected Features and {target} (Sampled)', y=1.02, fontsize=24)
                     pairplot_path = os.path.join(results_folder, f"pairplot_{target}.png")
                     plt.savefig(pairplot_path); plt.close(); plt.close('all')
                     swrite(summary, f"Pair plot saved to {pairplot_path}")

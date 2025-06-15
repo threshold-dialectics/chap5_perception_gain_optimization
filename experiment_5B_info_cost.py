@@ -1,6 +1,19 @@
 # experiment_2_info_cost.py
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Double all default font sizes across generated figures
+BASE_FONT_SIZE = plt.rcParams.get("font.size", 10) * 2
+for key in [
+    "font.size",
+    "axes.labelsize",
+    "axes.titlesize",
+    "xtick.labelsize",
+    "ytick.labelsize",
+    "legend.fontsize",
+    "figure.titlesize",
+]:
+    plt.rcParams[key] = BASE_FONT_SIZE
 import pandas as pd
 import itertools
 import time
@@ -279,20 +292,20 @@ if __name__ == "__main__":
                     if k_idx % 3 == 2 and k_idx < len(system_params_exp2) -1 : param_str_parts.append("\n")
 
                 param_str_exp2_title = ", ".join(param_str_parts)
-                fig_exp2.suptitle(f"Exp2: Metrics vs. Perception Gain for Params:\n{param_str_exp2_title}", fontsize=9)
+                fig_exp2.suptitle(f"Exp2: Metrics vs. Perception Gain for Params:\n{param_str_exp2_title}", fontsize=18)
 
                 axs_exp2[0].plot(df_sweep_results['g_lever'], df_sweep_results['mean_utility'], marker='o', ms=4, label='Utility (U)')
                 axs_exp2[0].set_ylabel("Mean Utility")
                 if not np.isnan(optimal_g_utility):
                      axs_exp2[0].axvline(optimal_g_utility, color='r', linestyle='--', lw=1, label=f'Optimal g={optimal_g_utility:.2f}')
-                axs_exp2[0].legend(fontsize='small')
+                axs_exp2[0].legend(fontsize=16)
 
                 axs_exp2[1].plot(df_sweep_results['g_lever'], mi_raw_curve, marker='s', ms=3, linestyle=':', label='MI_raw ($S_{true}$ vs $S_{sat}$)') # Use mi_raw_curve
                 axs_exp2[1].plot(df_sweep_results['g_lever'], df_sweep_results['mean_it_final'], marker='.', ms=4, label='IT_final ($S_{true}$ vs $S_{proc}$)')
                 if not np.isinf(system_params_exp2['C_proc']):
                     axs_exp2[1].axhline(system_params_exp2['C_proc'], color='grey', linestyle=':', lw=1.5, label=f'C_proc={system_params_exp2["C_proc"]:.1f}')
                 axs_exp2[1].set_ylabel("Mean MI / IT (bits)")
-                axs_exp2[1].legend(fontsize='small')
+                axs_exp2[1].legend(fontsize=16)
 
                 axs_exp2[2].plot(df_sweep_results['g_lever'], df_sweep_results['mean_tpe'], marker='.', ms=4, label='TPE (MSE)')
                 axs_exp2[2].set_ylabel("Mean TPE (MSE)")

@@ -2,6 +2,19 @@
 #experiment_1_adaptive_heuristics_refactored.py
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Double all default font sizes to improve figure readability
+BASE_FONT_SIZE = plt.rcParams.get("font.size", 10) * 2
+for key in [
+    "font.size",
+    "axes.labelsize",
+    "axes.titlesize",
+    "xtick.labelsize",
+    "ytick.labelsize",
+    "legend.fontsize",
+    "figure.titlesize",
+]:
+    plt.rcParams[key] = BASE_FONT_SIZE
 import pandas as pd
 import itertools
 import time
@@ -442,7 +455,7 @@ def plot_heuristic_behavior(model,
                 s=20, edgecolor='k', alpha=0.5, label='Simulated optimum')
     plt.xlabel(feat1_name)
     plt.ylabel(feat2_name)
-    plt.title('Heuristic model: predicted optimum g (other features held at mean)')
+    plt.title('Heuristic model: predicted optimum g')
     plt.legend()
     out_path = os.path.join(results_folder, "heuristic_contour_plot.png")
     plt.savefig(out_path)
@@ -963,7 +976,7 @@ def run_experiment(summary):
             if feat_name in analysis_df.columns:
                 axes_scatter[idx].scatter(analysis_df[feat_name], analysis_df[target_variable], alpha=0.5, s=15)
                 axes_scatter[idx].set_xlabel(feat_name); axes_scatter[idx].set_ylabel(target_variable)
-                axes_scatter[idx].set_title(f'{target_variable} vs. {feat_name}', fontsize=10); axes_scatter[idx].grid(True, alpha=0.3)
+                axes_scatter[idx].set_title(f'{target_variable} vs. {feat_name}', fontsize=20); axes_scatter[idx].grid(True, alpha=0.3)
         for i in range(num_orig_features, len(axes_scatter)): fig_scatter.delaxes(axes_scatter[i]) # Remove unused subplots
         plt.tight_layout(); scatter_path = os.path.join(RESULTS_FOLDER, "optimal_g_vs_original_features.png"); plt.savefig(scatter_path); plt.close(fig_scatter)
         summary.write(f"Scatter plots of optimal_g vs original features saved to {scatter_path}")
@@ -1197,7 +1210,7 @@ def run_experiment(summary):
         sample_size_pairplot = min(len(analysis_df), 200) 
         if sample_size_pairplot > 1 and len(pair_plot_vars) > 1: # Need at least 2 data points and 2 vars
             sns.pairplot(analysis_df[pair_plot_vars].sample(sample_size_pairplot, random_state=42, replace=False), kind='scatter', diag_kind='kde', corner=True, plot_kws={'alpha':0.4, 's':15})
-            plt.suptitle('Pair Plot of Original Features and Optimal g_mse (Sampled)', y=1.02, fontsize=12); pairplot_path = os.path.join(RESULTS_FOLDER, "pairplot_original_features.png"); plt.savefig(pairplot_path); plt.close()
+            plt.suptitle('Pair Plot of Original Features and Optimal g_mse (Sampled)', y=1.02, fontsize=24); pairplot_path = os.path.join(RESULTS_FOLDER, "pairplot_original_features.png"); plt.savefig(pairplot_path); plt.close()
             summary.write(f"\nPair plot saved to {pairplot_path}")
             try:
                 summary.write(
@@ -1545,7 +1558,12 @@ def run_experiment(summary):
                             shap.summary_plot(shap_values, data_for_shap, show=False, plot_size=(10,8))
                             plt.tight_layout()
                             shap_summary_path = os.path.join(RESULTS_FOLDER, "shap_summary_plot.png")
-                            plt.savefig(shap_summary_path)
+                            # Save at higher DPI to avoid pixelation in book quality output
+                            plt.savefig(
+                                shap_summary_path,
+                                dpi=500,
+                                bbox_inches="tight",
+                            )
                             plt.close()
                             summary.write(f"SHAP summary plot saved to {shap_summary_path}")
                             try:

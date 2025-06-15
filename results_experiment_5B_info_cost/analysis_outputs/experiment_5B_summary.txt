@@ -1,5 +1,5 @@
 --- Provenance & Runtime Info ---
-Start timestamp: 2025-06-02 06:22:00
+Start timestamp: 2025-06-15 16:43:57
 Python: 3.12.3
 numpy: 2.2.5, pandas: 2.2.3, sklearn: 1.6.1, seaborn: 0.13.2
 Random seed: 42
@@ -152,17 +152,17 @@ Data split: Train/Val: 1228, Test: 308
 
 Training models...
   Training Linear Regression...
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:269: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
   y_ravel = y.ravel()
   Linear Regression Coefs (first 3): [-0.06801208 -0.00679574 -0.30514646]...
   Linear Regression Intercept: 1.0394
   Training PolyReg(2)...
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:269: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
   y_ravel = y.ravel()
   PolyReg(2) Coefs (first 3): [ 0.17409233 -0.00944712 -0.3354019 ]...
   PolyReg(2) Intercept: 1.5280
   Training Random Forest...
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:269: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
   y_ravel = y.ravel()
 Fitting 5 folds for each of 10 candidates, totalling 50 fits
   Random Forest Feature Importances (Top 5):
@@ -172,7 +172,7 @@ s_max                            0.147245
 saturation_headroom_ratio        0.095979
 C_proc_for_modeling              0.035395
   Training Gradient Boosting...
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:256: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:269: FutureWarning: Series.ravel is deprecated. The underlying array is already 1D, so ravel is not necessary.  Use `to_numpy()` for conversion to a numpy array instead.
   y_ravel = y.ravel()
 C:\Users\Axel\anaconda3\envs\simulations\Lib\site-packages\sklearn\model_selection\_search.py:317: UserWarning: The total space of parameters 8 is smaller than n_iter=10. Running 8 iterations. For exhaustive searches, use GridSearchCV.
   warnings.warn(
@@ -193,7 +193,7 @@ dtype: float64
 
 Best model: Random Forest (CV MSE: 0.036291)
   Test Set MSE: 0.035863
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:512: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:525: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   calib_table = calib_df.groupby('bin').agg(pred_mean=('pred','mean'), actual_mean=('actual','mean'), n=('pred','size'))
 Test MSE 95% CI: [0.02624, 0.04785]
 Residuals: mean=-0.004119, sd=0.1893, skew=1.093, kurtosis=5.335, Shapiro_p=4.933e-14, BP_p=0.8555, DW=2.035
@@ -221,8 +221,8 @@ benefit_TPE_vs_cost_lambda       1.306611e-03
 alpha_gain_noise                 7.344366e-04
 phi1                             3.601579e-04
 gain_noise_sensitivity_proxy     1.656583e-04
-w_IT                            -5.551115e-17
-w_TPE                           -7.771561e-17
+w_IT                             1.665335e-16
+w_TPE                            1.221245e-16
 phi1_deviation_from_linear      -1.685493e-05
 kappa                           -6.351125e-04
 Cumulative permutation importance:
@@ -284,9 +284,9 @@ Rows with finite saturation point: 384 / 1536 = 25.0%
 Mean ± SD of g_lever_MI_saturates: 0.1 ± 7.087e-16
 Mean ± SD of diff_opt_g_saturates: 0.817 ± 0.1206
   Deciles of diff_opt_g_saturates: [0.6449, 0.6449, 0.8061, 0.8061, 0.8061, 0.8061, 0.9673, 0.9673, 0.9673]
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:615: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:628: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
   rho1, _ = scipy.stats.spearmanr(finite_rows['C_proc_for_modeling'], finite_rows['g_lever_MI_saturates'])
-c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:617: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+c:\Users\Axel\Documents\Threshold Dialectics Repos\chap5_perception_gain_optimization\analyze_experiment_5B_results.py:630: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
   rho2, _ = scipy.stats.spearmanr(finite_rows['C_proc_for_modeling'], finite_rows['diff_opt_g_saturates'])
 Correlation C_proc vs g_lever_MI_saturates: rho=nan, tau=nan
 Correlation C_proc vs diff_opt_g_saturates: rho=nan, tau=nan
@@ -304,4 +304,4 @@ METRIC, VALUE, COMMENT
 train_R2, 0.6822870830689629, Random-Forest
 test_MSE, 0.03586251523649902, 95% CI [0.0262,0.0478]
 
-Total analysis script execution time: 6.65 seconds (0.11 minutes).
+Total analysis script execution time: 6.17 seconds (0.10 minutes).
